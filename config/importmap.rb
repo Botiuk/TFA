@@ -13,3 +13,4 @@ pin "popper", to: "popper.js", preload: true
 pin "activestorage", to: "activestorage.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
+pin_all_from "app/javascript/custom", under: "custom"

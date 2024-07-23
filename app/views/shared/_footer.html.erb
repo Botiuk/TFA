@@ -1,0 +1,9 @@
+<%= "\u00A9"%> 
+<% if Date.today.year == 2007 %>
+    2007
+<% else %>
+    2007-<%= Date.today.year %>
+<% end %> 
+<%= mail_to "ternofieldarmy@gmail.com" do %>
+    <%= t('author') %>
+<% end %>

@@ -1,2 +1,11 @@
 uk:
-  appname: "TFA"
+  appname_html: "Ультрас ФК &quot;НИВА&quot; Тернопіль | TFA"
+  author: "Terno Field Army"
+
+  navbar:
+    news: "Новини"
+    calendar: "Календар"
+    tournament_table: "Таблиця"
+    chants: "Заряди"
+    atribute: "Атрибутика"
+    liga_top: "Ліга-ТОП"

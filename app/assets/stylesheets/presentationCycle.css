@@ -1,0 +1,90 @@
+.pc_container {
+	width: 600px;
+	height: 300px;
+	background-image: url(pc_bg.png);
+	float: left;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding-top: 15px;
+	padding-right: 1px;
+	padding-bottom: 47px;
+	padding-left: 1px;
+}
+
+.pc_container .pc_item {
+	margin-top: 15px;
+	margin-left: 1px;
+	width: 600px;
+	height: 300px;
+	text-align: center;
+}
+
+.pc_container .pc_bar_container {
+    position: absolute;
+    top: 330px;
+    color: white;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+    overflow:visible;
+}
+
+.pc_bar_container_underflow {
+    width: 90000px;
+    overflow: visible;
+}
+
+.pc_bar_container_overflow {
+    overflow: hidden;
+    position: absolute;
+    top: 330px;
+    color: white;
+    margin: 0px 10px 0px 10px;
+    padding: 0px;
+}
+
+.left, .center, .right {
+    background-position: left;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    font-size: 1px;
+    float: left;
+}
+
+.bar {
+    background-position: left;
+    overflow: hidden;
+    font-size: 1px;
+    float: left;
+}
+
+.pc_item .desc {
+    position: absolute;
+    width: 250px;
+    padding: 10px;
+    height: 180px;
+    line-height: 1.8em;
+    right: 0px;
+    background-image: url(slide_fade.png);
+}
+
+.pc_item .desc h1 {
+	color: #F00;
+	font-size: 20px;
+	padding-right: 5px;
+	padding-left: 5px;
+	text-align: center;
+}
+
+.pc_item .desc h1 a:link {
+	color: #F00;
+	text-decoration: none;
+}
+.pc_item .desc h1 a:hover {
+	color: #F00;
+	text-decoration: none;
+	position: relative;
+	top: 5px;
+	left: 5px;
+}
