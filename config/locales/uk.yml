@@ -21,6 +21,9 @@ uk:
       news_story:
         title: "Поле 'Заголовок"
 
+  alert:
+    access_denied: "Ви не маєте прав для доступу до цієї сторінки"
+
   navbar:
     news: "Новини"
     calendar: "Календар"
