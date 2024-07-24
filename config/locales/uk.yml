@@ -2,6 +2,25 @@ uk:
   appname_html: "Ультрас ФК &quot;НИВА&quot; Тернопіль | TFA"
   author: "Terno Field Army"
 
+  time:
+    formats:
+      default: "%a %d.%m.%Y, %H:%M"
+      long: "%H:%M, %e.%m.%Y"
+      short: "%e %b, %H:%M"
+
+  forms:
+    messages:
+      errors:
+        one: "Одна помилка не дає зберегти цей запис:"
+        few: "%{count} помилки не дають зберегти цей запис:"
+        many: "%{count} помилок не дають зберегти цей запис:"
+        other: "%{count} помилка:"
+
+  activerecord:
+    attributes:
+      news_story:
+        title: "Поле 'Заголовок"
+
   navbar:
     news: "Новини"
     calendar: "Календар"
