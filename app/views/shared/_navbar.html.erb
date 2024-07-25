@@ -1,33 +1,32 @@
-
-    <ul class="navbar-nav">
-        <li class="nav-item btn btn-danger p-0 mb-2 fw-bold fs-5 text-dark">
-            <%= link_to root_path, class: "nav-link" do %>
-                <%= t('navbar.news') %>
-            <% end %>
-        </li>
-        <li class="nav-item btn btn-danger p-0 mb-2 fw-bold fs-5 text-dark">
-            <%= link_to root_path, class: "nav-link" do %>
-                <%= t('navbar.calendar') %>
-            <% end %>
-        </li>
-        <li class="nav-item btn btn-danger p-0 mb-2 fw-bold fs-5 text-dark">
-            <%= link_to root_path, class: "nav-link" do %>
-                <%= t('navbar.tournament_table') %>
-            <% end %>
-        </li>
-        <li class="nav-item btn btn-danger p-0 mb-2 fw-bold fs-5 text-dark">
-            <%= link_to root_path, class: "nav-link" do %>
-                <%= t('navbar.chants') %>
-            <% end %>
-        </li>
-        <li class="nav-item btn btn-danger p-0 mb-2 fw-bold fs-5 text-dark">
-            <%= link_to root_path, class: "nav-link" do %>
-                <%= t('navbar.atribute') %>
-            <% end %>
-        </li>
-        <li class="nav-item btn btn-danger p-0 mb-2 fw-bold fs-5 text-dark">
-            <%= link_to root_path, class: "nav-link" do %>
-                <%= t('navbar.liga_top') %>
-            <% end %>
-        </li>
-    </ul>
+<ul class="navbar-nav">
+    <li class="nav-item btn btn-dark p-0 mb-2 fw-bold fs-5 text-danger">
+        <%= link_to news_stories_path, class: "nav-link" do %>
+            <%= t('navbar.news') %>
+        <% end %>
+    </li>
+    <li class="nav-item btn btn-dark p-0 mb-2 fw-bold fs-5 text-danger">
+        <%= link_to root_path, class: "nav-link" do %>
+            <%= t('navbar.calendar') %>
+        <% end %>
+    </li>
+    <li class="nav-item btn btn-dark p-0 mb-2 fw-bold fs-5 text-danger">
+        <%= link_to root_path, class: "nav-link" do %>
+            <%= t('navbar.tournament_table') %>
+        <% end %>
+    </li>
+    <li class="nav-item btn btn-dark p-0 mb-2 fw-bold fs-5 text-danger">
+        <%= link_to root_path, class: "nav-link" do %>
+            <%= t('navbar.chants') %>
+        <% end %>
+    </li>
+    <li class="nav-item btn btn-dark p-0 mb-2 fw-bold fs-5 text-danger">
+        <%= link_to root_path, class: "nav-link" do %>
+            <%= t('navbar.atribute') %>
+        <% end %>
+    </li>
+    <li class="nav-item btn btn-dark p-0 mb-2 fw-bold fs-5 text-danger">
+        <%= link_to root_path, class: "nav-link" do %>
+            <%= t('navbar.liga_top') %>
+        <% end %>
+    </li>
+</ul>

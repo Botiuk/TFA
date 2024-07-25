@@ -24,6 +24,14 @@ uk:
   alert:
     access_denied: "Ви не маєте прав для доступу до цієї сторінки"
 
+  notice:
+    create:
+      news_story: "Новину додано"
+    update:
+      news_story: "Новину оновлено"
+    destroy:
+      news_story: "Новину видалено"
+
   navbar:
     news: "Новини"
     calendar: "Календар"
@@ -31,3 +39,40 @@ uk:
     chants: "Заряди"
     atribute: "Атрибутика"
     liga_top: "Ліга-ТОП"
+
+  button:
+    add:
+      news_story: "Додати новину"
+    edit: "Редагувати"
+    show: "Детальніше"
+    delete: "Видалити"
+    delete_confirm: "Точно видалити?"
+    submit: "Підтвердити"
+    all:
+      news_stories: "Всі новини"
+
+  news_stories:
+    index:
+      title: "Новини"
+      news_stories_empty: "Поки новин немає"
+    news_story:
+      cover_absent: "обкладинка відсутня"
+      draft: "Чернетка"
+      scheduled: "Заплановано"
+    new:
+      title: "Нова новина"
+    form:
+      title: "Заголовок новини:"
+      published_at: "Дата публікації:*"
+      news_story_instruction: "* Дату публікації залишити порожньою, якщо новина в статусі чернетки, поставити майбутню, якщо заплановано до публікації пізніше і поточну, якщо новину потрібно зразу ж опублікувати"
+      cover: "Обкладинка новини:"
+      content: "Текст новини:"
+      placeholder:
+        title: "Введіть назву новини"
+    edit:
+      title: "Редагувати новину"
+    show:
+      cover_absent: "обкладинка відсутня"
+      content_absent: "Текст новини відсутній"
+      draft: "Чернетка"
+      scheduled: "Заплановано"
