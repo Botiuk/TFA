@@ -5,9 +5,9 @@ class NewsStoriesController < ApplicationController
 
     def index
         if user_signed_in? && current_user.role == "admin"
-            @pagy, @news_stories = pagy(NewsStory.all.order(published_at: :desc), items: 5)
+            @pagy, @news_stories = pagy(NewsStory.all.order(published_at: :desc), limit: 5)
         else
-            @pagy, @news_stories = pagy(NewsStory.where.not(published_at: nil).where.not('published_at > ?', DateTime.now).order(published_at: :desc), items: 5)
+            @pagy, @news_stories = pagy(NewsStory.where.not(published_at: nil).where.not('published_at > ?', DateTime.now).order(published_at: :desc), limit: 5)
         end
     rescue Pagy::OverflowError
         redirect_to news_stories_url(page: 1)
