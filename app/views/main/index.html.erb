@@ -1,11 +1,18 @@
-<div id="presentation_container" class="pc_container">
-    <div class="pc_item">
-        <div class="desc" style="opacity:0.0; filter:alpha(opacity=0)">
-            <h1>First news</h1>
+<div class="slideshow-container">
+    <% @news_stories.each do |news_story| %>
+        <div class="mySlides fade">
+            <img src="<%= cloudinary_url(news_story.cover.key, height: 300, width: 600, crop: :fill) %>">
+            <div class="text-slideshow">
+                <%= link_to news_story do %>
+                    <h5><%= news_story.title.truncate(55) %></h5>
+                <% end %>
+            </div>
         </div>
-        <a href=""><img src=""></a>
-    </div>
+    <% end %>
 </div>
-<script>
-    presentationCycle.init();
-</script>
+
+<div style="text-align:center">
+    <% @news_stories.size.times do %>
+        <span class="dot"></span>
+    <% end %>
+</div>
