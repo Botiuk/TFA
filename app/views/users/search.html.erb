@@ -1,0 +1,24 @@
+<div id="content_header">
+    <h4><%= t('.title') %> "<%= @search_params %>" </h4>
+</div>
+
+<div id="content_body">
+    <% if @users.present? %>
+        <div class="table-responsive pt-2">
+            <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+                <tr class="text-center">
+                    <th style="width: 40%;"><%= t('.email') %></th>
+                    <th style="width: 20%;"><%= t('.role') %></th>
+                    <th colspan="3", style="width: 10%;"><%= t('.change_role') %></th>
+                </tr>
+                <% @users.each do |user| %>
+                    <%= render user %>
+                <% end %>
+            </table>
+        </div>
+    <% else %>
+        <p class="text-danger"><%= t('.search_empty') %></p>
+    <% end %>
+
+    <%= render 'shared/pagy' %>
+</div>

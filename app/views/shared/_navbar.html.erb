@@ -29,4 +29,11 @@
             <%= t('navbar.liga_top') %>
         <% end %>
     </li>
+    <% if can? :read, User %>
+        <li class="nav-item btn btn-dark p-0 mb-2 fw-bold fs-5 text-danger">
+            <%= link_to users_path, class: "nav-link" do %>
+                <%= t('navbar.users') %>
+            <% end %>
+        </li>
+    <% end %>
 </ul>

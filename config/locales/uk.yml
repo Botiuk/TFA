@@ -20,6 +20,11 @@ uk:
     attributes:
       news_story:
         title: "Поле 'Заголовок"
+      user:
+        roles:
+          user: "Тіхарь"
+          fan: "Фанат"
+          admin: "Адмін"
 
   alert:
     access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -29,8 +34,12 @@ uk:
       news_story: "Новину додано"
     update:
       news_story: "Новину оновлено"
+      user_role: "Роль користувача змінено"
     destroy:
       news_story: "Новину видалено"
+
+  alert:
+    search_user: "Для пошуку потрібно ввести в поле хоча б один символ з електронної пошти"
 
   navbar:
     news: "Новини"
@@ -39,6 +48,7 @@ uk:
     chants: "Заряди"
     atribute: "Атрибутика"
     liga_top: "Ліга-ТОП"
+    users: "Користувачі"
 
   button:
     add:
@@ -51,8 +61,14 @@ uk:
     all:
       news_stories: "Всі новини"
     authorization:
-      login: "Війти"
+      login: "Ввійти"
       logout: "Вийти"
+    search: "Пошук"
+    change_role:
+      user: "Тіхарь"
+      fan: "Фанат"
+      admin: "Адмін"
+    change_role_confirm: "Точно змінити роль цього користувача?"
 
   news_stories:
     index:
@@ -106,3 +122,17 @@ uk:
       new:
         title: "Забули пароль?"
         submit: "Надіслати мені іструкції для скидання паролю"
+
+  users:
+    index:
+      title: "Користувачі"
+      search_placeholder: "- пошта користувача -"
+      email: "Електронна пошта"
+      role: "Роль"
+      change_role: "Змінити роль"
+    search:
+      title: "Пошук профіля користувача за електронною поштою з"
+      search_empty: "Немає даних про профілі користувачів, електронна пошта в яких співпадає з запитом"
+      email: "Електронна пошта"
+      role: "Роль"
+      change_role: "Змінити роль"

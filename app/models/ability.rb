@@ -18,6 +18,7 @@ class Ability
 
       if user.role == "admin"
         can :manage, NewsStory
+        can [:read, :update, :search], User
       end
     end
 
