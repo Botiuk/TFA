@@ -1,9 +1,30 @@
-<%= "\u00A9"%> 
+<div class="row">
+    <div class="col-6 text-start">
+        <% if user_signed_in? %>                
+            <%= link_to edit_user_registration_path, class: "btn btn-dark btn-sm text-danger fw-bold me-1" do %>
+                <i class="bi bi-file-person-fill"></i> <%= current_user.email %>
+            <% end %>
+            <%= button_to t('button.authorization.logout'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-dark btn-sm text-danger fw-bold", form: {style: 'display:inline-block;'} %>
+        <% else %>
+            <%= link_to t('button.authorization.login'), new_user_session_path, class: "btn btn-dark btn-sm text-danger fw-bold" %>
+        <% end %>
+    </div>
+    <div class="col-6 text-end">
+        <%= link_to "https://facebook.com/UltrasNyvaTernopil", target: :_blank, class: "btn btn-dark btn-sm text-danger me-1", type: "button" do %>
+            <i class="bi bi-facebook"></i>
+        <% end %>
+        <%= link_to "https://www.youtube.com/TernoFieldArmy", target: :_blank, class: "btn btn-dark btn-sm text-danger", type: "button" do %>
+            <i class="bi bi-youtube"></i>
+        <% end %>
+    </div>
+</div>
+
+<%= "\u00A9"%>
 <% if Date.today.year == 2007 %>
     2007
 <% else %>
     2007-<%= Date.today.year %>
-<% end %> 
+<% end %>
 <%= mail_to "ternofieldarmy@gmail.com" do %>
     <%= t('author') %>
 <% end %>

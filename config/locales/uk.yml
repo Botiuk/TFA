@@ -50,6 +50,9 @@ uk:
     submit: "Підтвердити"
     all:
       news_stories: "Всі новини"
+    authorization:
+      login: "Війти"
+      logout: "Вийти"
 
   news_stories:
     index:
