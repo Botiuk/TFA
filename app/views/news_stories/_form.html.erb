@@ -12,7 +12,7 @@
             <%= form.datetime_local_field :published_at, value: form.object.published_at || nil, min: form.object.published_at || DateTime.now, class: "form-control" %>
         </div>
 
-        <div class="col-12 my-2" style="text-align: justify;"><%= t('.news_story_instruction') %></div>
+        <div class="col-12 my-2 lh-1" style="text-align: justify;"><%= t('.news_story_instruction') %></div>
 
         <div class="col-12">
             <%= form.label :cover, t('.cover'), style: "display: block" %>
