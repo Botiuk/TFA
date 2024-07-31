@@ -25,6 +25,13 @@ uk:
           user: "Тіхарь"
           fan: "Фанат"
           admin: "Адмін"
+      atribute:
+        name: "Поле 'Назва'"
+        price: "Поле 'Ціна'"
+        avaliable: "Поле 'Наявність'"
+        avaliables:
+          present: "В наявності"
+          absent: "Немає в наявності"
 
   alert:
     access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -32,11 +39,14 @@ uk:
   notice:
     create:
       news_story: "Новину додано"
+      atribute: "Атрибутику створено"
     update:
       news_story: "Новину оновлено"
       user_role: "Роль користувача змінено"
+      atribute: "Атрибутику оновлено"
     destroy:
       news_story: "Новину видалено"
+      atribute: "Атрибутику видалено"
 
   alert:
     search_user: "Для пошуку потрібно ввести в поле хоча б один символ з електронної пошти"
@@ -53,6 +63,7 @@ uk:
   button:
     add:
       news_story: "Додати новину"
+      atribute: "Додати атрибутику"
     edit: "Редагувати"
     show: "Детальніше"
     delete: "Видалити"
@@ -60,6 +71,7 @@ uk:
     submit: "Підтвердити"
     all:
       news_stories: "Всі новини"
+      atributes: "Вся атрибутика"
     authorization:
       login: "Ввійти"
       logout: "Вийти"
@@ -136,3 +148,28 @@ uk:
       email: "Електронна пошта"
       role: "Роль"
       change_role: "Змінити роль"
+
+  atributes:
+    index:
+      title: "Атрибутика"
+      atributes_empty: "Поки атрибутики у продажу немає"
+    atribute:
+      photos_absent: "фото відсутні"
+      present: "В наявності"
+      absent: "Немає в наявності"
+    new:
+      title: "Нова атрибутика"
+    form:
+      name: "Назва атрибутики:"
+      price: "Ціна, грн:"
+      avaliable: "Наявність:"
+      prompt: "-- виберіть наявність --"
+      atribute_photos: "Фотографії атрибутики:"
+      placeholder:
+        name: "Введіть назву атрибутики"
+    edit:
+      title: "Редагувати атрибутику"
+    show:
+      photos_absent: "фото відсутні"
+      present: "В наявності"
+      absent: "Немає в наявності"

@@ -1,0 +1,23 @@
+<div id="content_header">
+    <div class="row">
+        <div class="col"><h4><%= t('.title') %></h4></div>
+        <% if can? :create, Atribute %>
+            <div class="col text-end">
+                <%= link_to t('button.add.atribute'), new_atribute_path, :method => :post, class: "btn btn-light btn-sm" %>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div id="content_body">
+    <% if @atributes.present? %>
+        <div class="row">
+            <% @atributes.each do |atribute| %>
+                <%= render atribute %>
+            <% end %>
+        </div>
+    <% else %>
+        <p class="fw-semibold text-danger text-center"><%= t('.atributes_empty') %></p>
+    <% end %>
+    
+    <%= render 'shared/pagy' %>
+</div>

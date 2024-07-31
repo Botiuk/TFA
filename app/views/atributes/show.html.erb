@@ -1,0 +1,58 @@
+<div id="content_header">
+    <h4><%= @atribute.name.capitalize %></h4>
+</div>
+<div id="content_body">
+    <div class="row mt-2">
+        <div class="col">
+            <div style="font-size: 12px;">
+                <% if @atribute.avaliable == "absent" %>
+                    <div class="btn btn-secondary btn-sm">
+                        <%= t('.absent') %>
+                    </div>
+                <% end %>
+                <% if @atribute.avaliable == "present" %>
+                    <div class="btn btn-success btn-sm">
+                        <%= t('.present') %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="col text-end">
+            <h4><%= @atribute.price %> <%= t('number.currency.format.unit') %></h4>
+        </div>
+    </div>
+    <% if @atribute.atribute_photos.attached? %>
+        <div class="row">
+            <% @atribute.atribute_photos.each do |photo| %>
+                <div class="col-12 my-1">
+                    <% if photo.representable? %>
+                        <img class="mw-100" src="<%= cloudinary_url(photo.key, height: 200, crop: :scale) %>"  style="width:100%;">
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <h5 class="text-center"><%= t('.photos_absent') %></h5>
+    <% end %>
+
+
+    <div class="row mt-2">
+        <div class="col">
+            <%= link_to t('button.all.atributes'), atributes_path, class: "btn btn-primary" %>
+        </div>
+        <div class="col text-end">
+            <% if can? :update, Atribute %>
+                <%= link_to t('button.edit'), edit_atribute_path(@atribute), class: "btn btn-warning" %>
+            <% end %>
+            <% if can? :destroy, Atribute %>
+                <%= button_to t('button.delete'), @atribute, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "btn btn-danger", form: {style: 'display:inline-block;'} %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<div class="col-12">
+    <div id="<%= dom_id atribute %>">
+        <%= link_to atribute, class: "text-decoration-none" do %>
+            <div class="card text-bg-light mt-2 mb-3">
+                <div class="card-body">
+                    <div class="container-image-text">
+                        <% if atribute.atribute_photos.present? %>
+                            <img class="mw-100" src="<%= cloudinary_url(atribute.atribute_photos.first.key, height: 200, crop: :scale) %>" style="width:100%;">
+                        <% else %>
+                            <div class="text-center bg-secondary text-white"><br><br><br><%= t('.photos_absent') %><br><br><br><br></div>
+                        <% end %>
+
+                        <div class="header-image-text py-2">
+                            <div class="row">
+                                <div class="col-9">
+                                    <h5>
+                                        <%= atribute.name.capitalize %>
+                                    </h5>
+                                    <div style="font-size: 12px;">
+                                        <% if atribute.avaliable == "absent" %>
+                                            <div class="btn btn-secondary btn-sm">
+                                                <%= t('.absent') %>
+                                            </div>
+                                        <% end %>
+                                        <% if atribute.avaliable == "present" %>
+                                            <div class="btn btn-success btn-sm">
+                                                <%= t('.present') %>
+                                            </div>
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <h4><%= atribute.price %> <%= t('number.currency.format.unit') %></h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

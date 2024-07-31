@@ -1,0 +1,40 @@
+<%= form_with(model: atribute) do |form| %>
+    <%= render 'shared/form_errors_messages', object: form.object %>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <%= form.label :name, t('.name'), style: "display: block" %>
+            <%= form.text_field :name,  placeholder: t('.placeholder.name'), autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <% if @atribute.atribute_photos.attached? %>
+                <% @atribute.atribute_photos.each do |atribute_photos| %>
+                    <%= form.hidden_field :atribute_photos, multiple: true, value: atribute_photos.signed_id %>
+                    <%= cl_image_tag(atribute_photos.key, width: 100, crop: :scale) %>
+                <% end %>
+            <% end %>
+        </div>
+
+        <div class="col-12">
+            <%= form.label :atribute_photos, t('.atribute_photos'), style: "display: block" %>
+            <%= form.file_field :atribute_photos, direct_upload: true, multiple: true, class: "form-control" %>
+        </div>
+
+        <div class="col-md-6">
+            <%= form.label :avaliable, t('.avaliable'), style: "display: block" %>
+            <%= form.select :avaliable, Atribute.avaliables.keys.map{ |key| [Atribute.human_enum_name(:avaliable, key), key] }, {:prompt => t('.prompt'), :selected => form.object.avaliable}, {:class => "form-select"} %>
+        </div>
+
+        <div class="col-md-6">
+            <%= form.label :price, t('.price'), style: "display: block" %>
+            <%= form.number_field :price, value: form.object.price, min: 0, step: 1, class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.button nil, class: "btn btn-success" do %>
+               <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
