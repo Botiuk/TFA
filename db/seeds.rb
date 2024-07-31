@@ -23,6 +23,15 @@ when "development"
         password_confirmation: ENV['SEEDS_PASS']
     )
 
+    30.times do
+        password = Faker::Internet.password(min_length: 6)
+        User.create(
+            email: Faker::Internet.unique.email(domain: 'gmail.com'),
+            password: password,
+            password_confirmation: password
+        )
+    end
+
     ActiveStorage::Blob.create!(
         key: 'w7zijcg8xc4kit0d0y051nxdygen',
         filename: 'fish_for_seeds.jpg',
@@ -51,6 +60,22 @@ when "development"
             record_id: news_story_id,
             name: 'content',
             body: Faker::Lorem.paragraph_by_chars
+        )
+    end
+
+    20.times do
+        Atribute.create(
+            name: Faker::Commerce.product_name,
+            price: Faker::Number.number(digits: 3),
+            avaliable: Atribute.avaliables.keys.sample
+        )
+    end
+    (1..20).each do |atribute_id|
+        ActiveStorage::Attachment.create!(
+            record_type: 'Atribute',
+            record_id: atribute_id,
+            name: 'atribute_photos',
+            blob_id: 1
         )
     end
 
