@@ -79,6 +79,14 @@ when "development"
         )
     end
 
+    30.times do
+        Video.create(
+            name: Faker::Book.title,
+            youtube_id: ["4xUEkxgnGqs", "SfsY2DJlIdE", "rCYCM8HYE1s", "0PY9176gEi8", "cax1HcvsOOY"].sample,
+            video_type: Video.video_types.keys.sample
+        )
+    end
+
 when "production"
 
     user = User.where(email: "ternofieldarmy@gmail.com").first_or_initialize

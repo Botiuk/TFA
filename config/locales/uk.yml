@@ -32,9 +32,12 @@ uk:
         avaliables:
           present: "В наявності"
           absent: "Немає в наявності"
-
-  alert:
-    access_denied: "Ви не маєте прав для доступу до цієї сторінки"
+      video:
+        name: "Поле 'Назва відео'"
+        youtube_id: "Поле 'YouTube ID'"
+        video_types:
+          chant: "Заряд"
+          match_report: "Звіт з матчу"
 
   notice:
     create:
@@ -49,6 +52,7 @@ uk:
       atribute: "Атрибутику видалено"
 
   alert:
+    access_denied: "Ви не маєте прав для доступу до цієї сторінки"
     search_user: "Для пошуку потрібно ввести в поле хоча б один символ з електронної пошти"
 
   navbar:
