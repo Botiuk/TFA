@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :news_stories
   resources :atributes
+  resources :videos, except: :show
 
   # Defines the root path route ("/")
   root "main#index"

@@ -1,0 +1,36 @@
+<div id="content_header">
+    <div class="row">
+        <% if @video_type == "chant" %>
+            <div class="col"><h4><%= t('.title_chants') %></h4></div>
+            <% if can? :create, Video %>
+                <div class="col text-end">
+                    <%= link_to t('button.add.chant'), new_video_path(video_type: "chant"), :method => :post, class: "btn btn-light btn-sm" %>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="col"><h4><%= t('.title_match_reports') %></h4></div>
+            <% if can? :create, Video %>
+                <div class="col text-end">
+                    <%= link_to t('button.add.match_report'), new_video_path(video_type: "match_report"), :method => :post, class: "btn btn-light btn-sm" %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
+<div id="content_body">
+    <% if @videos.present? %>
+        <div class="row">
+            <% @videos.each do |video| %>
+                <%= render video %>
+            <% end %>
+        </div>
+    <% else %>
+        <% if @video_type == "chant" %>
+            <p class="fw-semibold text-danger text-center"><%= t('.chants_empty') %></p>
+        <% else %>
+            <p class="fw-semibold text-danger text-center"><%= t('.match_reports_empty') %></p>
+        <% end %>
+    <% end %>
+
+    <%= render 'shared/pagy' %>
+</div>

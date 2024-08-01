@@ -1,0 +1,26 @@
+<div class="col-12">
+    <div id="<%= dom_id video %>">
+        <div class="card text-bg-light mt-2 mb-3">
+            <div class="card-body">
+                <div class="row pb-2">
+                    <div class="col">
+                        <%= video.name %>
+                    </div>
+                    <% if can? :update || :destroy, Video %>
+                        <div class="col text-end">
+                            <% if can? :update, Video %>
+                                <%= link_to t('button.edit'), edit_video_path(video), class: "btn btn-warning btn-sm" %>
+                            <% end %>
+                            <% if can? :destroy, Video %>
+                                <%= button_to t('button.delete'), video, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "btn btn-danger btn-sm", form: {style: 'display:inline-block;'} %>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="ratio ratio-16x9">
+                    <iframe src='https://www.youtube.com/embed/<%= video.youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen  style="width:100%;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

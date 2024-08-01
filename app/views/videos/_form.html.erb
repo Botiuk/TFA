@@ -1,0 +1,28 @@
+<%= form_with(model: video) do |form| %>
+    <%= render 'shared/form_errors_messages', object: form.object %>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <%= form.label :name, t('.name'), style: "display: block" %>
+            <%= form.text_field :name,  placeholder: t('.placeholder.name'), autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.label :youtube_id, t('.youtube_id'), style: "display: block" %>
+            <%= form.text_field :youtube_id, placeholder: t('.placeholder.youtube_id'), class: "form-control" %>
+        </div>
+
+        <div class="col-12 my-2" style="text-align: justify;"><%= t('.youtube_id_instruction_html') %></div>
+
+        <div>
+            <%= form.hidden_field :video_type %>
+        </div>
+
+        <div class="col-12">
+            <%= form.button nil, class: "btn btn-success" do %>
+               <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </div>
+
+<% end %>

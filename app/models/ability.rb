@@ -12,6 +12,7 @@ class Ability
     can :read, Atribute do |atribute|
       atribute.avaliable == "present"
     end
+    can :read, Video
 
     if user.present?
 
@@ -23,6 +24,7 @@ class Ability
         can :manage, NewsStory
         can [:read, :update, :search], User
         can :manage, Atribute
+        can :manage, Video
       end
     end
 

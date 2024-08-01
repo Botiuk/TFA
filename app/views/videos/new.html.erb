@@ -1,0 +1,10 @@
+<div id="content_header">
+    <% if @video.video_type == "chant" %>
+        <h4><%= t('.title_chant') %></h4>
+    <% else %>
+        <h4><%= t('.title_match_report') %></h4>
+    <% end %>
+</div>
+<div id="content_body">
+    <%= render "form", video: @video %>
+</div>
