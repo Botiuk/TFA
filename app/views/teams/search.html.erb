@@ -1,0 +1,24 @@
+<div id="content_header">
+    <h4><%= t('.title') %> "<%= @search_params %>" </h4>
+</div>
+
+<div id="content_body">
+    <% if @teams.present? %>
+        <div class="table-responsive pt-2">
+            <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+                <tr class="text-center">
+                    <th style="width: 40%;"><%= t('.name') %></th>
+                    <th style="width: 20%;"><%= t('.location') %></th>
+                    <th style="width: 30%;"></th>
+                </tr>
+                <% @teams.each do |team| %>
+                    <%= render team %>
+                <% end %>
+            </table>
+        </div>
+    <% else %>
+        <p class="text-danger"><%= t('.search_empty') %></p>
+    <% end %>
+
+    <%= render 'shared/pagy' %>
+</div>

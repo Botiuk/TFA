@@ -26,6 +26,7 @@ class Ability
         can [:read, :update, :search], User
         can :manage, Atribute
         can :manage, Video
+        can [:read, :create, :update, :search], Team
       end
     end
 

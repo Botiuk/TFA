@@ -1,0 +1,26 @@
+<%= form_with(model: team) do |form| %>
+    <%= render 'shared/form_errors_messages', object: form.object %>
+
+    <div class="row g-3">
+        <div class="col-3">
+            <%= form.label :team_type, t('.team_type'), style: "display: block" %>
+            <%= form.text_field :team_type,  placeholder: t('.placeholder.team_type'), class: "form-control" %>
+        </div>
+
+        <div class="col-7">
+            <%= form.label :name, t('.name'), style: "display: block" %>
+            <%= form.text_field :name,  placeholder: t('.placeholder.name'), autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="col-10">
+            <%= form.label :location, t('.location'), style: "display: block" %>
+            <%= form.text_field :location,  placeholder: t('.placeholder.location'), class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.button nil, class: "btn btn-success" do %>
+               <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

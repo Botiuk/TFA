@@ -1,0 +1,9 @@
+<tr id="<%= dom_id team %>" class="text-center">
+    <td style="width: 40%;"><%= team.team_type %> "<%= team.name %>"</td>
+    <td style="width: 20%;">
+        <%= team.location %>
+    </td>
+    <td style="width: 30%;">
+        <%= link_to t('button.edit'), edit_team_path(team), class: "btn btn-warning btn-sm" %>
+    </td>
+</tr>
