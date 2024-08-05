@@ -21,6 +21,7 @@ class Ability
       end
 
       if user.role == "admin"
+        can :admin, :main
         can :manage, NewsStory
         can [:read, :update, :search], User
         can :manage, Atribute

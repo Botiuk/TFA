@@ -59,6 +59,10 @@ body {
 	border-color: #FFF;
 }
 
+#content_body {
+	padding-top: 10px;
+}
+
 #toTop {
     position: fixed;
 	bottom: 10px;

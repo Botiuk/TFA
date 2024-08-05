@@ -70,6 +70,12 @@ uk:
     liga_top: "Ліга-ТОП"
     users: "Користувачі"
     video: "Відео"
+    admin: "Адмінка"
+    fans: "Фанати"
+    teams: "Команди"
+    stadia: "Стадіони"
+    seasons: "Сезони"
+    matches: "Матчі"
 
   button:
     add:
@@ -94,6 +100,10 @@ uk:
       fan: "Фанат"
       admin: "Адмін"
     change_role_confirm: "Точно змінити роль цього користувача?"
+
+  main:
+    admin:
+      title: "Адмінка"
 
   news_stories:
     index:

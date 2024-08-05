@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get 'admin', to: 'main#admin'
   get 'admin/users/search', to: 'users#search'
   scope "/admin" do
     resources :users, only: [:index, :update]
