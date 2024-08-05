@@ -87,6 +87,14 @@ when "development"
         )
     end
 
+    40.times do
+        Team.create(
+            team_type: [Faker::Alphanumeric.alphanumeric(number: 2, min_alpha: 2).upcase, nil].sample,
+            name: Faker::Sports::Football.team,
+            location: Faker::Address.city
+        )
+    end
+
 when "production"
 
     user = User.where(email: "ternofieldarmy@gmail.com").first_or_initialize
