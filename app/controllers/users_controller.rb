@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     def search
         if params[:email].blank?
-            redirect_to users_url, alert: t('alert.search_user')
+            redirect_to users_url, alert: t('alert.search.user')
         else
             @pagy, @users = pagy(User.where('email LIKE ?', "%" + params[:email] + "%").order(role: :desc, email: :asc), limit: 10)
             @search_params = params[:email]

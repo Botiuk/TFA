@@ -16,7 +16,7 @@ RSpec.describe "main", type: :request do
 
   describe "registered user (not admin) management" do
     before :each do
-      @user = create(:user)
+      @user = create(:user, role: ["user", "fan"].sample)
       login_as(@user, :scope => :user)
     end
 

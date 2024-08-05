@@ -15,28 +15,9 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "user-user management" do
+  describe "register user (not admin) management" do
     before :each do
-      user = create(:user)
-      login_as(user, :scope => :user)
-    end
-
-    it "cannot GET index and redirects to the root page" do
-      get users_path
-      expect(response).to redirect_to(root_path)
-      expect(flash[:alert]).to include I18n.t('alert.access_denied')
-    end
-
-    it "cannot GET search and redirects to the root page" do
-      get admin_users_search_path
-      expect(response).to redirect_to(root_path)
-      expect(flash[:alert]).to include I18n.t('alert.access_denied')
-    end
-  end
-
-  describe "user-fan management" do
-    before :each do
-      user = create(:user, role: "fan")
+      user = create(:user, role: ["user", "fan"].sample)
       login_as(user, :scope => :user)
     end
 
@@ -77,10 +58,10 @@ RSpec.describe "Users", type: :request do
       expect(response).to be_successful
     end
 
-    it "cannot GET empty search and redirect to users" do
+    it "cannot GET empty search and redirect to index page" do
       get admin_users_search_path
       expect(response).to redirect_to(users_path)
-      expect(flash[:alert]).to include(I18n.t('alert.search_user'))
+      expect(flash[:alert]).to include(I18n.t('alert.search.user'))
     end
   end
 end

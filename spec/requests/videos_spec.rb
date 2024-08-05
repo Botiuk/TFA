@@ -23,7 +23,7 @@ RSpec.describe "Videos", type: :request do
 
   describe "register user (not admin) management" do
     before :each do
-      @user = create(:user)
+      @user = create(:user, role: ["user", "fan"].sample)
       login_as(@user, :scope => :user)
     end
 

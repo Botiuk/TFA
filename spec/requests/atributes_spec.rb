@@ -58,13 +58,13 @@ RSpec.describe "Atributes", type: :request do
       expect(flash[:alert]).to include I18n.t('alert.access_denied')
     end
 
-    it "cannot GET new and redirects to the sign_in page" do
+    it "cannot GET new and redirects to the root page" do
       get new_atribute_path
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to include I18n.t('alert.access_denied')
     end
 
-    it "cannot GET edit and redirects to the sign_in page" do
+    it "cannot GET edit and redirects to the root page" do
       atribute = create(:atribute)
       get edit_atribute_path(atribute)
       expect(response).to redirect_to(root_path)
@@ -95,13 +95,13 @@ RSpec.describe "Atributes", type: :request do
       expect(response).to be_successful
     end
 
-    it "cannot GET new and redirects to the sign_in page" do
+    it "cannot GET new and redirects to the root page" do
       get new_atribute_path
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to include I18n.t('alert.access_denied')
     end
 
-    it "cannot GET edit and redirects to the sign_in page" do
+    it "cannot GET edit and redirects to the root page" do
       atribute = create(:atribute)
       get edit_atribute_path(atribute)
       expect(response).to redirect_to(root_path)
