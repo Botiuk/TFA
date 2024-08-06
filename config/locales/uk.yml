@@ -42,6 +42,14 @@ uk:
       team:
         name: "Поле 'Назва'"
         location: "Поле 'Звідки'"
+      stadium:
+        loctype: "Поле 'Тип'"
+        loctypes:
+          city: "м."
+          town: "смт."
+          village: "с."
+        location_name: "Поле 'Назва населеного пункту'"
+        stadium_name: " Поле 'Назва стадіону'"
 
   notice:
     create:

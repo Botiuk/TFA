@@ -95,6 +95,18 @@ when "development"
         )
     end
 
+    30.times do
+        Stadium.create(
+            country: Faker::Address.country,
+            region: Faker::Address.state,
+            district: Faker::Address.country_code_long.downcase.capitalize,
+            loctype:  Stadium.loctypes.keys.sample,
+            location_name: Faker::Address.city,
+            address: Faker::Address.street_address,
+            stadium_name: Faker::Restaurant.name
+        )
+    end
+    
 when "production"
 
     user = User.where(email: "ternofieldarmy@gmail.com").first_or_initialize
