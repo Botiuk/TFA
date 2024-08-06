@@ -1,0 +1,48 @@
+<%= form_with(model: stadium) do |form| %>
+    <%= render 'shared/form_errors_messages', object: form.object %>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <%= form.label :stadium_name, t('.stadium_name'), style: "display: block" %>
+            <%= form.text_field :stadium_name,  placeholder: t('.placeholder.stadium_name'), autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.label :address, t('.address'), style: "display: block" %>
+            <%= form.text_field :address,  placeholder: t('.placeholder.address'), class: "form-control" %>
+        </div>
+
+        <div class="col-md-2">
+            <%= form.label :loctype, t('.loctype'), style: "display: block" %>
+            <%= form.select :loctype, Stadium.loctypes.keys.map{ |key| [Stadium.human_enum_name(:loctype, key), key] }, {:prompt => t('.prompt'), :selected => form.object.loctype}, {:class => "form-select"} %>
+        </div>
+
+        <div class="col-10">
+            <%= form.label :location_name, t('.location_name'), style: "display: block" %>
+            <%= form.text_field :location_name,  placeholder: t('.placeholder.location_name'), class: "form-control" %>
+        </div>
+
+        <div class="col-6">
+            <%= form.label :region, t('.region'), style: "display: block" %>
+            <%= form.text_field :region,  placeholder: t('.placeholder.region'), class: "form-control" %>
+        </div>
+
+        <div class="col-6">
+            <%= form.label :district, t('.district'), style: "display: block" %>
+            <%= form.text_field :district,  placeholder: t('.placeholder.district'), class: "form-control" %>
+        </div>
+
+        <div class="col-6">
+            <%= form.label :country, t('.country'), style: "display: block" %>
+            <%= form.text_field :country,  placeholder: t('.placeholder.country'), class: "form-control" %>
+        </div>
+
+        <div class="col-12 my-2" style="text-align: justify;"><%= t('.instruction') %></div>
+
+        <div class="col-12">
+            <%= form.button nil, class: "btn btn-success" do %>
+               <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

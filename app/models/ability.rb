@@ -27,6 +27,7 @@ class Ability
         can :manage, Atribute
         can :manage, Video
         can [:read, :create, :update, :search], Team
+        can [:read, :create, :update, :search], Stadium
       end
     end
 

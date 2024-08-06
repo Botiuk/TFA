@@ -14,11 +14,13 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get 'teams/search', to: 'teams#search'
+  get 'stadia/search', to: 'stadia#search'
   
   resources :news_stories
   resources :atributes
   resources :videos, except: :show
   resources :teams, except: [:show, :destroy]
+  resources :stadia, except: [:show, :destroy]
 
   # Defines the root path route ("/")
   root "main#index"
