@@ -107,12 +107,20 @@ when "development"
         )
     end
 
-    15.times do
+    16.times do
         random_date = Faker::Date.between(from: 20.years.ago, to: 1.year.ago)
         Season.create(
             start_date: random_date,
             end_date: (random_date + rand(2..12).month),
             name: Faker::Movie.title
+        )
+    end
+
+    16.times do
+        Tournament.create(
+            name: Faker::Sports::Football.competition,
+            subname: Faker::Esport.league,
+            group: Faker::Esport.event
         )
     end
 
