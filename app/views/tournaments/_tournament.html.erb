@@ -1,0 +1,8 @@
+<tr id="<%= dom_id tournament %>" class="text-center">
+    <td style="width: 30%;"><%= tournament.name %></td>
+    <td style="width: 20%;"><%= tournament.subname %></td>
+    <td style="width: 20%;"><%= tournament.group %></td>
+    <td style="width: 20%;">
+        <%= link_to t('button.edit'), edit_tournament_path(tournament), class: "btn btn-warning btn-sm" %>
+    </td>
+</tr>

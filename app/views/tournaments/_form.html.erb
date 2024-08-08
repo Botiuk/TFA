@@ -1,0 +1,30 @@
+<%= form_with(model: tournament) do |form| %>
+    <%= render 'shared/form_errors_messages', object: form.object %>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <%= form.label :name, t('.name'), style: "display: block" %>
+            <%= form.text_field :name,  placeholder: t('.placeholder.name'), autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.label :subname, t('.subname'), style: "display: block" %>
+            <%= form.text_field :subname,  placeholder: t('.placeholder.subname'), class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.label :group, t('.group'), style: "display: block" %>
+            <%= form.text_field :group,  placeholder: t('.placeholder.group'), class: "form-control" %>
+        </div>
+
+        <% if @tournament.name.present? %>
+            <div class="col-12 my-2" style="text-align: justify;"><%= t('.instruction') %></div>
+        <% end %>
+
+        <div class="col-12">
+            <%= form.button nil, class: "btn btn-success" do %>
+               <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

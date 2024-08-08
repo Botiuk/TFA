@@ -29,6 +29,7 @@ class Ability
         can [:read, :create, :update, :search], Team
         can [:read, :create, :update, :search], Stadium
         can [:read, :create, :update], Season
+        can [:read, :create, :update], Tournament
       end
     end
 

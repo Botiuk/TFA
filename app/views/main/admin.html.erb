@@ -20,6 +20,7 @@
                 <% end %>
             </div>
         </div>
+
         <div class="row justify-content-evenly my-2">
             <div class="col mx-2 nav-item btn btn-danger fw-bold fs-5 text-dark">
                 <%= link_to stadia_path, class: "nav-link" do %>
@@ -32,9 +33,23 @@
                 <% end %>
             </div>
             <div class="col mx-2 nav-item btn btn-danger fw-bold fs-5 text-dark">
+                <%= link_to tournaments_path, class: "nav-link" do %>
+                    <%= t('navbar.tournaments') %>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="row justify-content-evenly my-2">
+            <div class="col mx-2 nav-item btn btn-danger fw-bold fs-5 text-dark">
                 <%= link_to root_path, class: "nav-link" do %>
                     <%= t('navbar.matches') %>
                 <% end %>
+            </div>
+            <div class="col mx-2">
+                
+            </div>
+            <div class="col mx-2">
+                
             </div>
         </div>
     </div>
