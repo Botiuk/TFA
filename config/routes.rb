@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :videos, except: :show
   resources :teams, except: [:show, :destroy]
   resources :stadia, except: [:show, :destroy]
+  resources :seasons, except: [:show, :destroy]
 
   # Defines the root path route ("/")
   root "main#index"

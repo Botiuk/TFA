@@ -28,6 +28,7 @@ class Ability
         can :manage, Video
         can [:read, :create, :update, :search], Team
         can [:read, :create, :update, :search], Stadium
+        can [:read, :create, :update], Season
       end
     end
 

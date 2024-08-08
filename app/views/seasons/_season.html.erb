@@ -1,0 +1,14 @@
+<tr id="<%= dom_id season %>" class="text-center">
+    <td style="width: 30%;"><%= season.name %></td>
+    <td style="width: 20%;"><%= I18n.l(season.start_date, format: :long) %></td>
+    <td style="width: 20%;">
+        <% if season.end_date.present? %>
+            <%= I18n.l(season.end_date, format: :long) %>
+        <% else %>
+        -
+        <% end %>    
+    </td>
+    <td style="width: 20%;">
+        <%= link_to t('button.edit'), edit_season_path(season), class: "btn btn-warning btn-sm" %>
+    </td>
+</tr>
