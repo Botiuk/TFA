@@ -124,6 +124,14 @@ when "development"
         )
     end
 
+    16.times do
+        Fan.create(
+            nickname: Faker::Internet.unique.username,
+            description: Faker::Lorem.paragraphs,
+            ontour_start: Faker::Number.between(from: 0, to: 7)
+        )
+    end
+
 when "production"
 
     user = User.where(email: "ternofieldarmy@gmail.com").first_or_initialize
