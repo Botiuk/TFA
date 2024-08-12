@@ -1,0 +1,32 @@
+<div id="content_header">
+    <div class="row">
+        <div class="col"><h4><%= t('.title') %></h4></div>
+        <div class="col text-end">
+            <%= link_to t('button.add.fan'), new_fan_path, :method => :post, class: "btn btn-light btn-sm" %>
+        </div>
+    </div>
+</div>
+
+<div id="content_body">
+    <div class="text-end py-2">
+        <%= form_tag(fans_search_path, :method => "get") do %>
+            <%= text_field_tag(:nickname, nil, placeholder: t('.search_placeholder'), class: "fs-6 fst-italic text-center") %>
+            <%= button_tag(t('button.search'), type: "submit", :name => nil, class: "btn btn-primary") %>
+        <% end %>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+            <tr class="text-center">
+                <th style="width: 30%;"><%= t('.nickname') %></th>
+                <th style="width: 20%;"><%= t('.ontour_start') %></th>
+                <th colspan="2", style="width: 40%;">
+            </tr>
+            <% @fans.each do |fan| %>
+                <%= render fan %>
+            <% end %>
+        </table>
+    </div>
+
+    <%= render 'shared/pagy' %>
+</div>

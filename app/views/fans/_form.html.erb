@@ -1,0 +1,26 @@
+<%= form_with(model: fan) do |form| %>
+    <%= render 'shared/form_errors_messages', object: form.object %>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <%= form.label :nickname, t('.nickname'), style: "display: block" %>
+            <%= form.text_field :nickname,  placeholder: t('.placeholder.nickname'), autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.label :ontour_start, t('.ontour_start'), style: "display: block" %>
+            <%= form.number_field :ontour_start, value: form.object.ontour_start || 0, min: 0, step: 1, class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.label :description, t('.description'), style: "display: block" %>
+            <%= form.text_area :description,  placeholder: t('.placeholder.description'), class: "form-control" %>
+        </div>
+
+        <div class="col-12">
+            <%= form.button nil, class: "btn btn-success" do %>
+               <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

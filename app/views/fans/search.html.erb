@@ -1,0 +1,24 @@
+<div id="content_header">
+    <h4><%= t('.title') %> "<%= @search_params %>" </h4>
+</div>
+
+<div id="content_body">
+    <% if @fans.present? %>
+        <div class="table-responsive pt-2">
+            <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+                <tr class="text-center">
+                    <th style="width: 30%;"><%= t('.nickname') %></th>
+                    <th style="width: 20%;"><%= t('.ontour_start') %></th>
+                    <th colspan="2", style="width: 40%;">
+                </tr>
+                <% @fans.each do |fan| %>
+                    <%= render fan %>
+                <% end %>
+            </table>
+        </div>
+    <% else %>
+        <p class="text-danger"><%= t('.search_empty') %></p>
+    <% end %>
+
+    <%= render 'shared/pagy' %>
+</div>

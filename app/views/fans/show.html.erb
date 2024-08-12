@@ -1,0 +1,18 @@
+<div id="content_header">
+    <div class="row">
+        <div class="col"><h4><%= t('.title') %></h4></div>
+    </div>
+</div>
+<div id="content_body">
+    <b><%= t('.nickname') %>:</b> <%= @fan.nickname %><br>
+    <b><%= t('.ontour_start') %>:</b> <%= @fan.ontour_start %><br>
+    <b><%= t('.description') %>:</b> <br>
+    <div style="text-align: justify; text-indent: 15px;">
+        <%= @fan.description %>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <%= link_to t('button.all.fans'), fans_path, class: "btn btn-primary" %>
+        </div>
+    </div>
+</div>
