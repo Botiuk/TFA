@@ -132,6 +132,24 @@ when "development"
         )
     end
 
+    season_ids = Season.ids
+    tournament_ids = Tournament.ids
+    stadium_ids = Stadium.ids
+    team_ids = Team.ids
+    20.times do
+        Match.create(
+            season_id: season_ids.sample,
+            tournament_id: tournament_ids.sample,
+            stage: Faker::Alphanumeric.alpha(number: 5),
+            stadium_id: stadium_ids.sample,
+            start_at: Faker::Time.between(from: DateTime.now - 6.month, to: DateTime.now + 6.month),
+            home_team_id: team_ids.sample,
+            home_goal: [Faker::Number.number(digits: 1), nil].sample,
+            visitor_team_id: team_ids.sample,
+            visitor_goal: [Faker::Number.number(digits: 1), nil].sample
+        )
+    end
+
 when "production"
 
     user = User.where(email: "ternofieldarmy@gmail.com").first_or_initialize

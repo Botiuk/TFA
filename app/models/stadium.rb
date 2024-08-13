@@ -1,4 +1,6 @@
 class Stadium < ApplicationRecord
+    has_many :matches
+
     validates :stadium_name, :loctype, :location_name, presence: true
     validates :stadium_name, uniqueness: { case_sensitive: false, scope: [:loctype, :location_name] }
 
