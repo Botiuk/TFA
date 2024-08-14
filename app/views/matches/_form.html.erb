@@ -1,0 +1,80 @@
+<% if @seasons.present? && @stadia.present? && @tournaments.present? && @teams.present? %>
+    <%= form_with(model: match) do |form| %>
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <div class="row g-3">
+            <div class="col-md-12">
+                <%= form.label :tournament_id, t('.tournament'), style: "display: block" %>
+                <%= select(:match, :tournament_id, options_for_select(@tournaments, :selected => form.object.tournament_id), {:prompt => t('.prompt.tournament')}, {:class => "form-select"}) %>
+            </div>
+
+            <div class="col-md-7">
+                <%= form.label :season_id, t('.season'), style: "display: block" %>
+                <%= select(:match, :season_id, options_for_select(@seasons, :selected => form.object.season_id), {:prompt => t('.prompt.season')}, {:class => "form-select"}) %>
+            </div>
+
+            <div class="col-md-5">
+                <%= form.label :stage, t('.stage'), style: "display: block" %>
+                <%= form.text_field :stage,  placeholder: t('.placeholder.stage'), class: "form-control" %>
+            </div>
+
+            <div class="col-md-12">
+                <%= form.label :stadium_id, t('.stadium'), style: "display: block" %>
+                <%= select(:match, :stadium_id, options_for_select(@stadia, :selected => form.object.stadium_id), {:prompt => t('.prompt.stadium')}, {:class => "form-select"}) %>
+            </div>
+
+            <div class="col-md-7">
+                <%= form.label :start_at, t('.start_at'), style: "display: block" %>
+                <%= form.datetime_local_field :start_at, value: form.object.start_at, class: "form-control" %>
+            </div>
+
+            <div class="col-md-6">
+                <%= form.label :home_team_id, t('.hometeam'), style: "display: block" %>
+                <%= select(:match, :home_team_id, options_for_select(@teams, :selected => form.object.home_team_id), {:prompt => t('.prompt.hometeam')}, {:class => "form-select"}) %>
+            </div>
+
+            <div class="col-md-6">
+                <%= form.label :visitor_team_id, t('.visitorteam'), style: "display: block" %>
+                <%= select(:match, :visitor_team_id, options_for_select(@teams, :selected => form.object.visitor_team_id), {:prompt => t('.prompt.visitorteam')}, {:class => "form-select"}) %>
+            </div>
+
+            <div class="col-md-5">
+                <%= form.label t('.score'), style: "display: block" %>
+                <div class="input-group">
+                    <%= form.number_field :home_goal, min: 0, step: 1, :value => form.object.home_goal, class: "form-control" %>
+                    <span class="input-group-text">:</span>
+                    <%= form.number_field :visitor_goal, min: 0, step: 1, :value => form.object.visitor_goal, class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="col-12 my-2" style="text-align: justify;"><%= t('.instruction') %></div>
+
+            <div class="col-12">
+                <%= form.button nil, class: "btn btn-success" do %>
+                    <%= t('button.submit') %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+
+<% elsif @seasons.empty? %>
+    <div class="container text-center text-danger">
+        <h6><%= t('.seasons_empty') %></h6>
+        <%= link_to t('button.add.season'), new_season_path, :method => :post, class: "btn btn-light btn-sm" %>
+    </div>
+<% elsif @stadia.empty? %>
+    <div class="container text-center text-danger">
+        <h6><%= t('.stadia_empty') %></h6>
+        <%= link_to t('button.add.stadium'), new_stadium_path, :method => :post, class: "btn btn-light btn-sm" %>
+    </div>
+<% elsif @tournaments.empty? %>
+    <div class="container text-center text-danger">
+        <h6><%= t('.tournaments_empty') %></h6>
+        <%= link_to t('button.add.tournament'), new_tournament_path, :method => :post, class: "btn btn-light btn-sm" %>
+    </div>
+<% else %>
+    <div class="container text-center text-danger">
+        <h6><%= t('.teams_empty') %></h6>
+        <%= link_to t('button.add.team'), new_team_path, :method => :post, class: "btn btn-light btn-sm" %>
+    </div>
+<% end %>

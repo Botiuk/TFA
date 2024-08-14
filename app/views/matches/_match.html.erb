@@ -1,0 +1,30 @@
+<tr id="<%= dom_id match %>" class="text-center">
+    <td style="width: 15%;"><%= I18n.l(match.start_at, format: :only_date) %></td>
+    <td style="width: 30%;">
+        <% if match.home_team.team_type.present? %>
+            <%= match.home_team.team_type %>
+        <% end %>
+        "<%= match.home_team.name %>"</td>    
+    <td style="width: 10%;">
+        <% if match.home_goal.nil? %>
+            -
+        <% else %>
+            <%= match.home_goal %>
+        <% end %>
+            : 
+        <% if match.visitor_goal.nil? %>
+            -
+        <% else %>
+            <%= match.visitor_goal %>
+        <% end %>
+    </td>
+    <td style="width: 30%;">
+        <% if match.visitor_team.team_type.present? %>
+            <%= match.visitor_team.team_type %>
+        <% end %>
+        "<%= match.visitor_team.name %>"
+    </td>
+    <td style="width: 15%;">
+        <%= link_to t('button.show'), match_path(match), class: "btn btn-info btn-sm" %>
+    </td>
+</tr>

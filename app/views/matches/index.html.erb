@@ -1,0 +1,27 @@
+<div id="content_header">
+    <div class="row">
+        <div class="col"><h4><%= t('.title') %></h4></div>
+        <div class="col text-end">
+            <%= link_to t('button.add.match'), new_match_path, :method => :post, class: "btn btn-light btn-sm" %>
+        </div>
+    </div>
+</div>
+
+<div id="content_body">
+    <div class="table-responsive">
+        <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+            <tr class="text-center">
+                <th style="width: 15%;"><%= t('.date') %></th>
+                <th style="width: 30%;"><%= t('.home_team') %></th>
+                <th style="width: 10%;"><%= t('.score') %></th>
+                <th style="width: 30%;"><%= t('.visitor_team') %></th>
+                <th style="width: 15%;"></th>
+            </tr>
+            <% @matches.each do |match| %>
+                <%= render match %>
+            <% end %>
+        </table>
+    </div>
+
+    <%= render 'shared/pagy' %>
+</div>

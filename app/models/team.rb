@@ -4,4 +4,14 @@ class Team < ApplicationRecord
 
     validates :name, :location, presence: true
     validates :name, uniqueness: { case_sensitive: false, scope: [:team_type, :location] }
+
+    private
+    
+    def self.formhelper
+        teams = Team.order(:name, :location).pluck(:name, :id)
+        teams.map do |element|
+            element[0] = Team.where(id: element[1]).pluck(:name, :location).join(", ")
+        end
+        return teams
+    end
 end

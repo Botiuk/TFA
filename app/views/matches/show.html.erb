@@ -1,0 +1,90 @@
+<div id="content_header">
+    <div class="row">
+        <div class="col"><h4><%= t('.title') %></h4></div>
+        <div class="col text-end">
+            <%= link_to t('button.edit'), edit_match_path(@match), class: "btn btn-warning btn-sm" %>
+        </div>
+    </div>
+</div>
+<div id="content_body">
+    <div class="card text-bg-light mt-2 mb-3">
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-12">
+                    <%= @match.season.name %>
+                </div>
+                <div class="col-12">
+                    <% if @match.tournament.subname.present? || @match.tournament.group.present? || @match.stage.present? %>
+                        <%= @match.tournament.name %>.
+                    <% else %>
+                        <%= @match.tournament.name %>
+                    <% end %>
+
+                    <% if @match.tournament.subname.present? %>
+                        <% if @match.tournament.group.present? || @match.stage.present? %>
+                            <%= @match.tournament.subname %>.
+                        <% else %>
+                            <%= @match.tournament.subname %>
+                        <% end %>
+                    <% end %>
+
+                    <% if @match.tournament.group.present? %>
+                        <% if @match.stage.present? %>
+                            <%= @match.tournament.group %>. <%= @match.stage %>
+                        <% else %>
+                            <%= @match.tournament.group %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="row text-center fw-bold">
+                <div class="col-5">
+                    <% if @match.home_team.team_type.present? %>
+                        <%= @match.home_team.team_type %>
+                    <% end %>
+                    "<%= @match.home_team.name %>" <br>
+                    /<%= @match.home_team.location %>/
+                </div>
+                <div class="col-2 fs-3">
+                    <% if @match.home_goal.nil? %>
+                        -
+                    <% else %>
+                        <%= @match.home_goal %>
+                    <% end %>
+                        : 
+                    <% if @match.visitor_goal.nil? %>
+                        -
+                    <% else %>
+                        <%= @match.visitor_goal %>
+                    <% end %>
+                </div>
+                <div class="col-5">
+                    <% if @match.visitor_team.team_type.present? %>
+                        <%= @match.visitor_team.team_type %>
+                    <% end %>
+                    "<%= @match.visitor_team.name %>" <br>
+                    /<%= @match.visitor_team.location %>/
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 text_start">
+                    <i class="bi bi-calendar3"></i> <%= I18n.l(@match.start_at, format: :only_date_long) %>
+                </div>
+                <div class="col-6 text-end">
+                    <i class="bi bi-clock"></i> <%= I18n.l(@match.start_at, format: :only_time) %>
+                </div>
+                <div class="col-12 text-center">
+                    <i class="bi bi-geo-alt"></i> <%= Stadium.human_enum_name(:loctype, @match.stadium.loctype) %> <%= @match.stadium.location_name %>, <%= @match.stadium.stadium_name %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col">
+            <%= link_to t('button.all.matches'), matches_path, class: "btn btn-primary" %>
+        </div>
+    </div>
+
+</div>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :seasons, except: [:show, :destroy]
   resources :tournaments, except: [:show, :destroy]
   resources :fans, except: [:destroy]
+  resources :matches, except: [:destroy]
 
   # Defines the root path route ("/")
   root "main#index"
