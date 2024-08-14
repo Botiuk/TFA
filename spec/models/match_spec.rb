@@ -41,6 +41,11 @@ RSpec.describe Match, type: :model do
     expect(match).to_not be_valid
   end
 
+  it "is not valid without a start_at" do
+    match = build(:match, start_at: nil)
+    expect(match).to_not be_valid
+  end
+
   it "is not valid when a home_goal is not number" do
     match = build(:match, home_goal: "One")
     expect(match).to_not be_valid
