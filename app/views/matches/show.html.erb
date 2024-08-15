@@ -81,10 +81,12 @@
         </div>
     </div>
 
-    <div class="row mt-2">
-        <div class="col">
-            <%= link_to t('button.all.matches'), matches_path, class: "btn btn-primary" %>
+    <% if can? :create, Match %>
+        <div class="row mt-2">
+            <div class="col">
+                <%= link_to t('button.all.matches'), matches_path, class: "btn btn-primary" %>
+            </div>
         </div>
-    </div>
+    <% end %>
 
 </div>

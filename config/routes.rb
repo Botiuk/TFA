@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'teams/search', to: 'teams#search'
   get 'stadia/search', to: 'stadia#search'
   get 'fans/search', to: 'fans#search'
+  get '/calendar', to: 'matches#calendar'
   
   resources :news_stories
   resources :atributes

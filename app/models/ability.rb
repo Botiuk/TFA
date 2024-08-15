@@ -13,11 +13,13 @@ class Ability
       atribute.avaliable == "present"
     end
     can :read, Video
+    can :calendar, Match
 
     if user.present?
+      can :show, Match
 
       if user.role == "fan"
-        can :read, Atribute
+        can :read, Atribute        
       end
 
       if user.role == "admin"

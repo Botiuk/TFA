@@ -4,14 +4,14 @@
         <% if match.home_team.team_type.present? %>
             <%= match.home_team.team_type %>
         <% end %>
-        "<%= match.home_team.name %>"</td>    
+        "<%= match.home_team.name %>"</td>
     <td style="width: 10%;">
         <% if match.home_goal.nil? %>
             -
         <% else %>
             <%= match.home_goal %>
         <% end %>
-            : 
+            :
         <% if match.visitor_goal.nil? %>
             -
         <% else %>
@@ -24,7 +24,9 @@
         <% end %>
         "<%= match.visitor_team.name %>"
     </td>
-    <td style="width: 15%;">
-        <%= link_to t('button.show'), match_path(match), class: "btn btn-info btn-sm" %>
-    </td>
+    <% if can? :show, Match %>
+        <td style="width: 15%;">
+            <%= link_to t('button.show'), match_path(match), class: "btn btn-info btn-sm" %>
+        </td>
+    <% end %>
 </tr>

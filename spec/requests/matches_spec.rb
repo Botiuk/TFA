@@ -26,6 +26,11 @@ RSpec.describe "Matches", type: :request do
     expect(response).to redirect_to(new_user_session_path)
     expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
   end
+
+  it "can GET calendar" do
+    get calendar_path
+    expect(response).to be_successful
+  end
 end
 
 describe "register user (not admin) management" do
@@ -40,11 +45,10 @@ describe "register user (not admin) management" do
     expect(flash[:alert]).to include I18n.t('alert.access_denied')
   end
 
-  it "cannot GET show and redirects to the root page" do
+  it "can GET show" do
     match = create(:match)
     get match_path(match)
-    expect(response).to redirect_to(root_path)
-    expect(flash[:alert]).to include I18n.t('alert.access_denied')
+    expect(response).to be_successful
   end
 
   it "cannot GET new and redirects to the root page" do
@@ -58,6 +62,11 @@ describe "register user (not admin) management" do
     get edit_match_path(match)
     expect(response).to redirect_to(root_path)
     expect(flash[:alert]).to include I18n.t('alert.access_denied')
+  end
+
+  it "can GET calendar" do
+    get calendar_path
+    expect(response).to be_successful
   end
 end
 
@@ -87,7 +96,7 @@ describe "user-admin management" do
     tournament = create(:tournament)
     season = create(:season)
     stadium = create(:stadium)
-    team = create(:team)    
+    team = create(:team)
     post matches_path, params: { match: attributes_for(:match, tournament_id: tournament.id, season_id: season.id, stadium_id: stadium.id, home_team_id: team.id, visitor_team_id: team.id) }
     expect(response).to be_redirect
     follow_redirect!
@@ -106,5 +115,10 @@ describe "user-admin management" do
     expect(match.reload.stage).to eq("Winter")
     expect(response).to redirect_to(match_path(match))
     expect(flash[:notice]).to include(I18n.t('notice.update.match'))
+  end
+
+  it "can GET calendar" do
+    get calendar_path
+    expect(response).to be_successful
   end
 end

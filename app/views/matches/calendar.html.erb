@@ -1,0 +1,35 @@
+<div id="content_header">
+    <div class="row">
+        <div class="col"><h4><%= t('.title') %></h4></div>
+    </div>
+</div>
+
+<div id="content_body">
+    <% if @active_season.present? || @last_season.present? %>
+        <% if @active_season.present? %>
+            <h5 class="text-center"><%= @active_season.name %></h5>
+        <% else %>
+            <h5 class="text-center"><%= @last_season.name %></h5>
+        <% end %>
+        <div class="table-responsive">
+            <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+                <tr class="text-center">
+                    <th style="width: 15%;"><%= t('.date') %></th>
+                    <th style="width: 30%;"><%= t('.home_team') %></th>
+                    <th style="width: 10%;"><%= t('.score') %></th>
+                    <th style="width: 30%;"><%= t('.visitor_team') %></th>
+                    <% if can? :show, Match %>
+                        <th style="width: 15%;"></th>
+                    <% end %>
+                </tr>
+                <% @matches.each do |match| %>
+                    <%= render match %>
+                <% end %>
+            </table>
+        </div>
+
+        <%= render 'shared/pagy' %>
+    <% else %>
+        <h6><%= t('.seasons_empty') %></h6>
+    <% end %>
+</div>
