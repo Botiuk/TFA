@@ -150,6 +150,15 @@ when "development"
         )
     end
 
+    fan_ids = Fan.ids
+    match_ids = Match.ids
+    40.times do
+        FanMatch.create(
+            fan_id: fan_ids.sample,
+            match_id: match_ids.sample
+        )
+    end
+
 when "production"
 
     user = User.where(email: "ternofieldarmy@gmail.com").first_or_initialize
