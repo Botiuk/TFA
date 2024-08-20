@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'stadia/search', to: 'stadia#search'
   get 'fans/search', to: 'fans#search'
   get '/calendar', to: 'matches#calendar'
+  get '/liga_top', to: 'fan_matches#liga_top'
   
   resources :news_stories
   resources :atributes
@@ -25,8 +26,9 @@ Rails.application.routes.draw do
   resources :stadia, except: [:show, :destroy]
   resources :seasons, except: [:show, :destroy]
   resources :tournaments, except: [:show, :destroy]
-  resources :fans, except: [:destroy]
-  resources :matches, except: [:destroy]
+  resources :fans, except: :destroy
+  resources :matches, except: :destroy
+  resources :fan_matches, only: [:new, :create, :destroy]
 
   # Defines the root path route ("/")
   root "main#index"

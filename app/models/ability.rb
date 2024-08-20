@@ -14,12 +14,14 @@ class Ability
     end
     can :read, Video
     can :calendar, Match
+    can :liga_top, FanMatch
 
     if user.present?
       can :show, Match
 
       if user.role == "fan"
-        can :read, Atribute        
+        can :read, Atribute       
+        can :show, Fan
       end
 
       if user.role == "admin"
@@ -34,6 +36,7 @@ class Ability
         can [:read, :create, :update], Tournament
         can [:read, :create, :update, :search], Fan
         can [:read, :create, :update], Match
+        can [:create, :destroy], FanMatch
       end
     end
 

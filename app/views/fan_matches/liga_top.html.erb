@@ -1,0 +1,32 @@
+<div id="content_header">
+    <h4><%= t('.title') %></h4>
+</div>
+<div id="content_body">
+    <% if @last_update.present? %>
+        <h5 class="text-center">(<%= t('.update') %> <%= I18n.l(@last_update, format: :only_date) %>)</h5>
+        <div class="table-responsive">
+            <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+                <tr class="text-center">
+                    <th style="width: 30%;"><%= t('.nickname') %></th>
+                    <th style="width: 20%;"><%= t('.ontour') %></th>
+                </tr>
+                <% @liga_top_fans.each do |liga_top_fan| %>
+                    <tr class="text-center">
+                        <td style="width: 30%;">
+                            <% if can? :show, Fan %>
+                                <%= link_to fan_path(liga_top_fan), class: "text-reset text-decoration-none" do %>
+                                    <%= liga_top_fan.nickname %>
+                                <% end %>
+                            <% else %>
+                                    <%= liga_top_fan.nickname %>
+                            <% end %>
+                        </td>
+                        <td style="width: 20%;"><%= liga_top_fan.ontour_start %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    <% else %>
+        <%= t('.fans_empty') %>
+    <% end %>
+</div>
