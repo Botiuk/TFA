@@ -6,13 +6,60 @@
 <div id="content_body">
     <b><%= t('.nickname') %>:</b> <%= @fan.nickname %><br>
     <b><%= t('.ontour_start') %>:</b> <%= @fan.ontour_start %><br>
-    <b><%= t('.description') %>:</b> <br>
-    <div style="text-align: justify; text-indent: 15px;">
-        <%= @fan.description %>
-    </div>
-    <div class="row mt-2">
-        <div class="col">
-            <%= link_to t('button.all.fans'), fans_path, class: "btn btn-primary" %>
+    <b><%= t('.ontour_record') %>:</b> <%= @matches.count %><br>
+    <b><%= t('.ontour_all') %>:</b> <%= @matches_all %><br>
+    <% if can? :create, Fan %>
+        <b><%= t('.description') %>:</b> <br>
+        <div style="text-align: justify; text-indent: 15px;">
+            <%= @fan.description %>
         </div>
+    <% end %>
+
+    <hr style="border-top: dotted 1px;">
+
+    <div class="row mb-2">
+        <div class="col"><h5><%= t('.fan_matches') %></h5></div>
+        <% if can? :create, FanMatch %>
+            <div class="col text-end">
+                <%= link_to t('button.add.match'), new_fan_match_path(fan_id: @fan.id), :method => :post, class: "btn btn-light btn-sm" %>
+            </div>
+        <% end %>
     </div>
+
+    <div class="table-responsive">
+        <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
+            <tr class="text-center">
+                <th style="width: 10%;"><%= t('.number') %></th>
+                <th style="width: 15%;"><%= t('.date') %></th>
+                <th style="width: 30%;"><%= t('.home_team') %></th>
+                <th style="width: 30%;"><%= t('.visitor_team') %></th>
+                <% if can? :destroy, FanMatch %>
+                    <th style="width: 15%;"></th>
+                <% end %>
+            </tr>
+            <% if @matches.present? %>
+                <% @matches.each_with_index do |match, index| %>
+                    <%= render 'fans/ontour', match: match, index: index %>
+                <% end %>
+            <% else %>
+                <tr class="text-center">
+                    <% if can? :destroy, FanMatch %>
+                        <td colspan="5">
+                    <% else %>
+                        <td colspan="4">
+                    <% end %>
+                            <%= t('.matches_empty') %>
+                        </td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+
+    <% if can? :create, Fan %>
+        <div class="row mt-2">
+            <div class="col">
+                <%= link_to t('button.all.fans'), fans_path, class: "btn btn-primary" %>
+            </div>
+        </div>
+    <% end %>
 </div>

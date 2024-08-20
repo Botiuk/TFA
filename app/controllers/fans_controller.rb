@@ -10,6 +10,10 @@ class FansController < ApplicationController
     end
 
     def show
+        matches_ids = FanMatch.where(fan_id: @fan.id).pluck(:match_id)
+        @fan_matches = FanMatch.where(fan_id: @fan.id)
+        @matches = Match.includes(:home_team, :visitor_team).where(id: matches_ids).order(start_at: :desc)
+        @matches_all = @matches.count + @fan.ontour_start
     end
 
     def new

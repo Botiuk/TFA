@@ -1,0 +1,28 @@
+<tr id="<%= dom_id match %>" class="text-center">
+    <td style="width: 10%;"><%= @matches_all - index  %></td>
+    <td style="width: 15%;">
+        <%= link_to match, class: "text-reset text-decoration-none" do %>
+            <%= I18n.l(match.start_at, format: :only_date) %>
+        <% end %>
+    </td>
+    <td style="width: 30%;">
+        <% if match.home_team.team_type.present? %>
+            <%= match.home_team.team_type %>
+        <% end %>
+        "<%= match.home_team.name %>"</td>
+    <td style="width: 30%;">
+        <% if match.visitor_team.team_type.present? %>
+            <%= match.visitor_team.team_type %>
+        <% end %>
+        "<%= match.visitor_team.name %>"
+    </td>
+    <% if can? :destroy, FanMatch %>
+        <td style="width: 15%;">
+            <% @fan_matches.each do |fan_match| %>
+                <% if fan_match.match_id == match.id %>
+                    <%= button_to t('button.delete'), fan_match_path(fan_match, :from=>"fan"), method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "btn btn-danger btn-sm" %>
+                <% end %>
+            <% end %>
+        </td>
+    <% end %>
+</tr>

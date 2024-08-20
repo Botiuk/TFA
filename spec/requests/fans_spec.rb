@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Fans", type: :request do
-  describe "GET /index" do
+  describe "non registered user management" do
     it "cannot GET index and redirects to the sign_in page" do
       get fans_path
       expect(response).to redirect_to(new_user_session_path)
@@ -53,13 +53,6 @@ RSpec.describe "Fans", type: :request do
       expect(flash[:alert]).to include I18n.t('alert.access_denied')
     end
 
-    it "cannot GET show and redirects to the root page" do
-      fan = create(:fan)
-      get fan_path(fan)
-      expect(response).to redirect_to(root_path)
-      expect(flash[:alert]).to include I18n.t('alert.access_denied')
-    end
-
     it "cannot GET new and redirects to the root page" do
       get new_fan_path
       expect(response).to redirect_to(root_path)
@@ -71,6 +64,33 @@ RSpec.describe "Fans", type: :request do
       get edit_fan_path(fan)
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to include I18n.t('alert.access_denied')
+    end
+  end
+
+  describe "user-user management" do
+    before :each do
+      @user = create(:user, role: "user")
+      login_as(@user, :scope => :user)
+    end
+
+    it "cannot GET show and redirects to the root page" do
+      fan = create(:fan)
+      get fan_path(fan)
+      expect(response).to redirect_to(root_path)
+      expect(flash[:alert]).to include I18n.t('alert.access_denied')
+    end
+  end
+
+  describe "user-fan management" do
+    before :each do
+      @user = create(:user, role: "fan")
+      login_as(@user, :scope => :user)
+    end
+
+    it "can GET show" do
+      fan = create(:fan)
+      get fan_path(fan)
+      expect(response).to be_successful
     end
   end
 
