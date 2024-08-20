@@ -51,7 +51,7 @@
                     <% else %>
                         <%= @match.home_goal %>
                     <% end %>
-                        : 
+                        :
                     <% if @match.visitor_goal.nil? %>
                         -
                     <% else %>
@@ -80,6 +80,46 @@
             </div>
         </div>
     </div>
+
+    <hr style="border-top: dotted 1px;">
+
+    <div class="row mb-2">
+        <div class="col"><h5><%= t('.fan_matches') %> (<%= t('.fan_matches_count') %> <%= @fans.count %>)</h5></div>
+        <% if can? :create, FanMatch %>
+            <div class="col text-end">
+                <%= link_to t('button.add.fan'), new_fan_match_path(match_id: @match.id), :method => :post, class: "btn btn-light btn-sm" %>
+            </div>
+        <% end %>
+    </div>
+
+    <% if @fans.present? %>
+        <% if can? :destroy, FanMatch %>
+            <div class="row justify-content-center my-2">
+                <% @fans.each do |fan| %>
+                    <div class="col-7 text-center border border-white rounded-3 p-1">
+                        <%= link_to fan, class: "text-reset text-decoration-none" do %>
+                            <%= fan.nickname %>
+                        <% end %>
+                        <% @fan_matches.each do |fan_match| %>
+                            <% if fan_match.fan_id == fan.id %>
+                                <%= button_to t('button.delete'), fan_match_path(fan_match), method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "btn btn-danger btn-sm", form: {style: 'display:inline-block;'} %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        <% else %>
+            <% @fans.each do |fan| %>
+                - 
+                <%= link_to fan, class: "text-reset text-decoration-none" do %>
+                    <%= fan.nickname %>
+                <% end %>
+            <% end %>
+            -
+        <% end %>
+    <% else %>
+        <%= t('.fans_empty') %>
+    <% end %>
 
     <% if can? :create, Match %>
         <div class="row mt-2">
