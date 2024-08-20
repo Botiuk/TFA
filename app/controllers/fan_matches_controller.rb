@@ -38,16 +38,17 @@ class FanMatchesController < ApplicationController
         end
     end
 
-
     def liga_top
         @last_update = FanMatch.maximum(:updated_at)
         fan_matches_count = FanMatch.group(:fan_id).count
-        @liga_top_fans = Fan.order(:nickname)
-        @liga_top_fans.map do |liga_top_fan|
-            if fan_matches_count.has_key?(liga_top_fan.id)
-                liga_top_fan.ontour_start = liga_top_fan.ontour_start + fan_matches_count.values_at(liga_top_fan.id).join.to_i
+        liga_top_fans = Fan.order(nickname: :desc).pluck(:id, :nickname, :ontour_start)
+        liga_top_fans.map do |liga_top_fan|
+            if fan_matches_count.has_key?(liga_top_fan[0])
+                liga_top_fan[2] += fan_matches_count.values_at(liga_top_fan[0]).join.to_i
             end
         end
+        @liga_top_fans = liga_top_fans.sort_by{ |liga_top_fan| liga_top_fan[2] }.reverse
+        @liga_top_fans_count = liga_top_fans.count
     end
 
     private

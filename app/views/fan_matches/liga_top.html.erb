@@ -7,21 +7,23 @@
         <div class="table-responsive">
             <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
                 <tr class="text-center">
+                    <th style="width: 10%;"><%= t('.number') %></th>
                     <th style="width: 30%;"><%= t('.nickname') %></th>
                     <th style="width: 20%;"><%= t('.ontour') %></th>
                 </tr>
-                <% @liga_top_fans.each do |liga_top_fan| %>
+                <% @liga_top_fans.each_with_index do |liga_top_fan, index| %>
                     <tr class="text-center">
+                        <td style="width: 10%;"><%= (index + 1) %></td>
                         <td style="width: 30%;">
                             <% if can? :show, Fan %>
-                                <%= link_to fan_path(liga_top_fan), class: "text-reset text-decoration-none" do %>
-                                    <%= liga_top_fan.nickname %>
+                                <%= link_to fan_path(liga_top_fan[0]), class: "text-reset text-decoration-none" do %>
+                                    <%= liga_top_fan[1] %>
                                 <% end %>
                             <% else %>
-                                    <%= liga_top_fan.nickname %>
+                                    <%= liga_top_fan[1] %>
                             <% end %>
                         </td>
-                        <td style="width: 20%;"><%= liga_top_fan.ontour_start %></td>
+                        <td style="width: 20%;"><%= liga_top_fan[2] %></td>
                     </tr>
                 <% end %>
             </table>

@@ -159,7 +159,7 @@ uk:
     all:
       news_stories: "Всі новини"
       atributes: "Вся атрибутика"
-      fans: "Всі фанати Ліги-ТОП"
+      fans: "Всі фанати"
       matches: "Всі матчі"
     authorization:
       login: "Ввійти"
@@ -412,7 +412,7 @@ uk:
       ontour_record: "Кількість виїздів після додавання в Лігу-ТОП"
       ontour_all: "Загальна кількість виїздів"
       fan_matches: "Виїзди фаната"
-      number: "№"
+      number: "№ п/п"
       date: "Дата"
       home_team: "Господарі"
       visitor_team: "Гості"
@@ -482,5 +482,6 @@ uk:
       title: "Ліга-ТОП"
       update: "оновлено"
       fans_empty: "Поки немає фанатів"
+      number: "№ п/п"
       nickname: "Нік"
       ontour: "Виїзди"
