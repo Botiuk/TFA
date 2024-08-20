@@ -109,13 +109,15 @@
                 <% end %>
             </div>
         <% else %>
-            <% @fans.each do |fan| %>
-                - 
+            <% @fans.each_with_index do |fan, index| %>
                 <%= link_to fan, class: "text-reset text-decoration-none" do %>
-                    <%= fan.nickname %>
+                    <% if (index + 1) != @fans.size %>
+                        <%= fan.nickname %>,
+                    <% else %>
+                        <%= fan.nickname %>.
+                    <% end %>
                 <% end %>
             <% end %>
-            -
         <% end %>
     <% else %>
         <%= t('.fans_empty') %>

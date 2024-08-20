@@ -1,6 +1,11 @@
 <div id="content_header">
     <div class="row">
         <div class="col"><h4><%= t('.title') %></h4></div>
+        <% if can? :edit, Fan %>
+            <div class="col text-end">
+                <%= link_to t('button.edit'), edit_fan_path(@fan), class: "btn btn-warning btn-sm" %>
+            </div>
+        <% end %>
     </div>
 </div>
 <div id="content_body">
