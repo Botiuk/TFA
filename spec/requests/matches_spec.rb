@@ -31,6 +31,12 @@ RSpec.describe "Matches", type: :request do
     get calendar_path
     expect(response).to be_successful
   end
+
+  it "can GET calendar with params[:season_id]" do
+    season = create(:season)
+    get calendar_path(season_id: season.id)
+    expect(response).to be_successful
+  end
 end
 
 describe "register user (not admin) management" do
@@ -66,6 +72,12 @@ describe "register user (not admin) management" do
 
   it "can GET calendar" do
     get calendar_path
+    expect(response).to be_successful
+  end
+
+  it "can GET calendar with params[:season_id]" do
+    season = create(:season)
+    get calendar_path(season_id: season.id)
     expect(response).to be_successful
   end
 end
@@ -119,6 +131,12 @@ describe "user-admin management" do
 
   it "can GET calendar" do
     get calendar_path
+    expect(response).to be_successful
+  end
+
+  it "can GET calendar with params[:season_id]" do
+    season = create(:season)
+    get calendar_path(season_id: season.id)
     expect(response).to be_successful
   end
 end

@@ -7,6 +7,6 @@ class Season < ApplicationRecord
     private
 
     def self.formhelper
-        Season.order(name: :desc).pluck(:name, :id)
+        Season.order(start_date: :desc, name: :desc).pluck(:name, :id)
     end
 end

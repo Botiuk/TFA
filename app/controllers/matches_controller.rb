@@ -42,17 +42,25 @@ class MatchesController < ApplicationController
 
     def calendar
         if Season.count != 0
-            @active_season = Season.where('end_date > ?', Date.today).or(Season.where(end_date: nil)).order(:end_date).last
-            if @active_season.present?
-                @pagy, @matches = pagy(Match.includes(:home_team, :visitor_team).where(season_id: @active_season.id).order(start_at: :asc), limit: 15)
+            @seasons = Season.formhelper
+            if params[:season_id].present?
+                @active_season = Season.find(params[:season_id])
+                @pagy, @matches = pagy(Match.calendar(params[:season_id]), limit: 15)
             else
-                last_season_end_date = Season.maximum(:end_date)
-                @last_season =  Season.where(end_date: last_season_end_date).last
-                @pagy, @matches = pagy(Match.includes(:home_team, :visitor_team).where(season_id: @last_season.id).order(start_at: :asc), limit: 15)
+                @active_season = Season.where('end_date > ?', Date.today).or(Season.where(end_date: nil)).order(:end_date).last
+                if @active_season.present?
+                    @pagy, @matches = pagy(Match.calendar(@active_season.id), limit: 15)
+                else
+                    last_season_end_date = Season.maximum(:end_date)
+                    @last_season =  Season.where(end_date: last_season_end_date).last
+                    @pagy, @matches = pagy(Match.calendar(@last_season.id), limit: 15)
+                end
             end
         end
+    rescue ActiveRecord::RecordNotFound
+        redirect_to calendar_path
     rescue Pagy::OverflowError
-        redirect_to matches_url(page: 1)
+        redirect_to calendar_path(page: 1)
     end
 
     private

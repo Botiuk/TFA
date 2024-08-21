@@ -465,12 +465,14 @@ uk:
       fans_empty: "Немає даних про фанатів на матчі"
     calendar:
       title: "Календар"
+      prompt: "-- показати інший сезон --"
       date: "Дата"
       match_type: "Тип"
       home_team: "Господарі"
       visitor_team: "Гості"
       score: "Рахунок"
       seasons_empty: "Поки немає даних про активний чи завершений сезон"
+      matches_empty: "Поки немає даних про матчі"
 
   fan_matches:
     new:
