@@ -10,7 +10,7 @@
 <div id="content_body">
     <div class="text-end py-2">
         <%= form_tag(stadia_search_path, :method => "get") do %>
-            <%= text_field_tag(:location_name, nil, placeholder: t('.search_placeholder'), class: "fs-6 fst-italic text-center") %>
+            <%= text_field_tag(:location_name, nil, placeholder: t('.search_placeholder'), class: "fs-6 fst-italic text-center border border-white rounded-2 p-1") %>
             <%= button_tag(t('button.search'), type: "submit", :name => nil, class: "btn btn-primary") %>
         <% end %>
     </div>
