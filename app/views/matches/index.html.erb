@@ -12,12 +12,10 @@
         <table class="table align-middle table-dark table-striped table-bordered border-dark-subtle">
             <tr class="text-center">
                 <th style="width: 15%;"><%= t('.date') %></th>
+                <th style="width: 10%;"><%= t('.match_type') %></th>
                 <th style="width: 30%;"><%= t('.home_team') %></th>
                 <th style="width: 10%;"><%= t('.score') %></th>
                 <th style="width: 30%;"><%= t('.visitor_team') %></th>
-                <% if can? :show, Match %>
-                    <th style="width: 15%;"></th>
-                <% end %>
             </tr>
             <% @matches.each do |match| %>
                 <%= render match %>

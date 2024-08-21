@@ -40,7 +40,7 @@ class FanMatchesController < ApplicationController
 
     def liga_top
         @last_update = FanMatch.maximum(:updated_at)
-        fan_matches_count = FanMatch.group(:fan_id).count
+        fan_matches_count = FanMatch.joins(:match).where(match: { match_type: "ontour" }).group(:fan_id).count
         liga_top_fans = Fan.order(nickname: :desc).pluck(:id, :nickname, :ontour_start)
         liga_top_fans.map do |liga_top_fan|
             if fan_matches_count.has_key?(liga_top_fan[0])

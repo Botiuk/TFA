@@ -64,7 +64,7 @@ class MatchesController < ApplicationController
     end
 
     def match_params
-        params.require(:match).permit(:season_id, :tournament_id, :stage, :stadium_id, :start_at, :home_team_id, :home_goal, :visitor_team_id, :visitor_goal)
+        params.require(:match).permit(:season_id, :tournament_id, :stage, :stadium_id, :start_at, :match_type, :home_team_id, :home_goal, :visitor_team_id, :visitor_goal)
     end
 
     def my_formhelpers

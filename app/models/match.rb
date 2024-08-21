@@ -15,7 +15,7 @@ class Match < ApplicationRecord
     private
     
     def self.formhelper
-        matches = Match.order(start_at: :desc).pluck(:start_at, :id)
+        matches = Match.where.not(match_type: "friendly").order(start_at: :desc).pluck(:start_at, :id)
         matches.map do |element|
             match = Match.includes(:home_team, :visitor_team).where(id: element[1]).first
             element[0] = "#{I18n.l(match.start_at, format: :only_date)}" + " | " + "#{match.home_team.name}" + " - " + "#{match.visitor_team.name}"

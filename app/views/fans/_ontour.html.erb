@@ -1,7 +1,7 @@
 <tr id="<%= dom_id match %>" class="text-center">
     <td style="width: 10%;"><%= @matches_all - index  %></td>
     <td style="width: 15%;">
-        <%= link_to match, class: "text-reset text-decoration-none" do %>
+        <%= link_to match, class: "text-reset" do %>
             <%= I18n.l(match.start_at, format: :only_date) %>
         <% end %>
     </td>

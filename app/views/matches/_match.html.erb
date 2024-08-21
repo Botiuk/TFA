@@ -1,5 +1,22 @@
 <tr id="<%= dom_id match %>" class="text-center">
-    <td style="width: 15%;"><%= I18n.l(match.start_at, format: :only_date) %></td>
+    <td style="width: 15%;">
+        <% if can? :show, Match %>
+            <%= link_to match, class: "text-reset" do %>
+                <%= I18n.l(match.start_at, format: :only_date) %>
+            <% end %>
+        <% else %>
+            <%= I18n.l(match.start_at, format: :only_date) %>
+        <% end %>
+    </td>
+    <td style="width: 10%;">
+        <% if match.match_type == "home" %>
+            <i class="bi bi-house"></i>
+        <% elsif match.match_type == "ontour" %>
+            <i class="bi bi-train-front"></i>
+        <% else %>
+            <i class="bi bi-person-raised-hand"></i>
+        <% end %>
+    </td>
     <td style="width: 30%;">
         <% if match.home_team.team_type.present? %>
             <%= match.home_team.team_type %>
@@ -24,9 +41,4 @@
         <% end %>
         "<%= match.visitor_team.name %>"
     </td>
-    <% if can? :show, Match %>
-        <td style="width: 15%;">
-            <%= link_to t('button.show'), match_path(match), class: "btn btn-info btn-sm" %>
-        </td>
-    <% end %>
 </tr>

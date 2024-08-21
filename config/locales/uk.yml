@@ -79,9 +79,9 @@ uk:
         match_types:
           home: "домашній"
           ontour: "виїзний"
-          friendly: "товариський"
+          friendly: "дружній"
       fan_match:
-        fan: "Такий фанат на цьому матчі"
+        fan: "Фанат на цьому матчі"
 
   notice:
     create:
@@ -410,13 +410,12 @@ uk:
       nickname: "Нікнейм"
       ontour_start: "Стартова кількість виїздів"
     show:
-      title: "Детальніше про фаната з Ліги-ТОП"
-      nickname: "Нікнейм"
+      title: "Детальніше про"
       description: "Додаткові відомості"
       ontour_start: "Кількість виїздів на момент додавання в Лігу-ТОП"
       ontour_record: "Кількість виїздів після додавання в Лігу-ТОП"
       ontour_all: "Загальна кількість виїздів"
-      fan_matches: "Виїзди фаната"
+      fan_matches: "Виїзди"
       number: "№   п/п"
       date: "Дата"
       home_team: "Господарі"
@@ -427,6 +426,7 @@ uk:
     index:
       title: "Матчі"
       date: "Дата"
+      match_type: "Тип"
       home_team: "Господарі"
       visitor_team: "Гості"
       score: "Рахунок"
@@ -438,6 +438,7 @@ uk:
       season: "Сезон:"
       tournament: "Турнір:"
       matchdate: "Дата і час матчу:"
+      match_type: "Тип матчу:"
       stadium: "Стадіон:"
       hometeam: "Господарі:"
       visitorteam: "Гості:"
@@ -453,6 +454,7 @@ uk:
        hometeam: "-- виберіть господаря --"
        visitorteam: "-- виберіть гостя --"
        season: "-- виберіть сезон --"
+       match_type: "-- виберіть тип матчу --"
     new:
       title: "Новий матч"
     edit:
@@ -460,11 +462,11 @@ uk:
     show:
       title: "Детальніше про матч"
       fan_matches: "Фанати на матчі"
-      fan_matches_count: "всього"
       fans_empty: "Немає даних про фанатів на матчі"
     calendar:
       title: "Календар"
       date: "Дата"
+      match_type: "Тип"
       home_team: "Господарі"
       visitor_team: "Гості"
       score: "Рахунок"

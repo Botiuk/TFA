@@ -23,9 +23,14 @@
                 <%= select(:match, :stadium_id, options_for_select(@stadia, :selected => form.object.stadium_id), {:prompt => t('.prompt.stadium')}, {:class => "form-select"}) %>
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <%= form.label :start_at, t('.start_at'), style: "display: block" %>
                 <%= form.datetime_local_field :start_at, value: form.object.start_at, class: "form-control" %>
+            </div>
+
+            <div class="col-md-6">
+                <%= form.label :match_type, t('.match_type'), style: "display: block" %>
+                <%= form.select :match_type, Match.match_types.keys.map{ |key| [Match.human_enum_name(:match_type, key), key] }, {:prompt => t('.prompt.match_type'), :selected => form.object.match_type}, {:class => "form-select"} %>
             </div>
 
             <div class="col-md-6">

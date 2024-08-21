@@ -16,11 +16,11 @@
                         <td style="width: 10%;"><%= (index + 1) %></td>
                         <td style="width: 30%;">
                             <% if can? :show, Fan %>
-                                <%= link_to fan_path(liga_top_fan[0]), class: "text-reset text-decoration-none" do %>
+                                <%= link_to fan_path(liga_top_fan[0]), class: "text-reset" do %>
                                     <%= liga_top_fan[1] %>
                                 <% end %>
                             <% else %>
-                                    <%= liga_top_fan[1] %>
+                                <%= liga_top_fan[1] %>
                             <% end %>
                         </td>
                         <td style="width: 20%;"><%= liga_top_fan[2] %></td>
