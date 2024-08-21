@@ -146,12 +146,13 @@ when "development"
             home_team_id: team_ids.sample,
             home_goal: [Faker::Number.number(digits: 1), nil].sample,
             visitor_team_id: team_ids.sample,
-            visitor_goal: [Faker::Number.number(digits: 1), nil].sample
+            visitor_goal: [Faker::Number.number(digits: 1), nil].sample,
+            match_type: Match.match_types.keys.sample
         )
     end
 
     fan_ids = Fan.ids
-    match_ids = Match.ids
+    match_ids = Match.where(match_type: "ontour").ids
     40.times do
         FanMatch.create(
             fan_id: fan_ids.sample,

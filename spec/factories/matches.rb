@@ -9,5 +9,6 @@ FactoryBot.define do
     home_goal { [Faker::Number.number(digits: 1), nil].sample }
     visitor_team { FactoryBot.create(:team) }
     visitor_goal { [Faker::Number.number(digits: 1), nil].sample }
+    match_type { Match.match_types.keys.sample }
   end
 end

@@ -8,7 +8,9 @@ class Match < ApplicationRecord
     has_many :fan_matches
 
     validates :home_goal, :visitor_goal, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
-    validates :start_at, presence: true
+    validates :start_at, :match_type, presence: true
+
+    enum :match_type, { home: 0, ontour: 1, friendly: 2 }, prefix: true
 
     private
     

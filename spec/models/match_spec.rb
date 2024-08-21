@@ -21,6 +21,11 @@ RSpec.describe Match, type: :model do
     expect(match).to_not be_valid
   end
 
+  it "is not valid without a match_type" do
+    match = build(:match, match_type: nil)
+    expect(match).to_not be_valid
+  end
+
   it "is not valid without a home_team" do
     match = build(:match, home_team_id: nil)
     expect(match).to_not be_valid
