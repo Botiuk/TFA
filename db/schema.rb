@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_20_105936) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_22_080143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_20_105936) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "match_videos", force: :cascade do |t|
+    t.bigint "match_id", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_match_videos_on_match_id"
+    t.index ["video_id"], name: "index_match_videos_on_video_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -165,6 +174,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_20_105936) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "fan_matches", "fans"
   add_foreign_key "fan_matches", "matches"
+  add_foreign_key "match_videos", "matches"
+  add_foreign_key "match_videos", "videos"
   add_foreign_key "matches", "seasons"
   add_foreign_key "matches", "stadia"
   add_foreign_key "matches", "teams", column: "home_team_id"

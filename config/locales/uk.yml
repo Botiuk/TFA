@@ -25,6 +25,11 @@ uk:
         many: "%{count} помилок не дають зберегти цей запис:"
         other: "%{count} помилка:"
 
+  errors:
+    messages:
+      taken: "вже додано"
+      blank: "має бути заповнено"
+
   activerecord:
     attributes:
       news_story:
@@ -81,7 +86,9 @@ uk:
           ontour: "виїзний"
           friendly: "дружній"
       fan_match:
-        fan: "Фанат на цьому матчі"
+        fan: "Такого фаната до цього матчу"
+      match_video:
+        video: "Таке відео до цього матчу"
 
   notice:
     create:

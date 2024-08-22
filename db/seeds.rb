@@ -79,10 +79,10 @@ when "development"
         )
     end
 
-    30.times do
+    20.times do
         Video.create(
             name: Faker::Book.title,
-            youtube_id: ["4xUEkxgnGqs", "SfsY2DJlIdE", "rCYCM8HYE1s", "0PY9176gEi8", "cax1HcvsOOY"].sample,
+            youtube_id: [["4xUEkxgnGqs", "SfsY2DJlIdE", "rCYCM8HYE1s", "0PY9176gEi8", "cax1HcvsOOY", "fV9pBVOXung", "-j7BcbcH78g", "MkYtsyL6TZM"].sample, Faker::Alphanumeric.alpha(number: 10)].sample,
             video_type: Video.video_types.keys.sample
         )
     end
@@ -107,7 +107,7 @@ when "development"
         )
     end
 
-    16.times do
+    5.times do
         random_date = Faker::Date.between(from: 20.years.ago, to: 1.year.ago)
         Season.create(
             start_date: random_date,
@@ -157,6 +157,15 @@ when "development"
         FanMatch.create(
             fan_id: fan_ids.sample,
             match_id: match_ids.sample
+        )
+    end
+
+    match_ids = Match.ids
+    video_ids = Video.where(video_type: "match_report").ids
+    20.times do
+        MatchVideo.create(
+            match_id: match_ids.sample,
+            video_id: video_ids.sample
         )
     end
 
