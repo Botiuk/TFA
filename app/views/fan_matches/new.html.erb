@@ -1,8 +1,8 @@
 <div id="content_header">
     <% if @match.present? %>
-        <h4><%= t('.title_match') %> <%= @match.home_team.name %> - <%= @match.visitor_team.name %> (<%= I18n.l(@match.start_at, format: :only_date) %>)</h4>
+        <h4><%= t('.title_match') %> "<%= @match.home_team.name %> - <%= @match.visitor_team.name %> (<%= I18n.l(@match.start_at, format: :only_date) %>)"</h4>
     <% elsif @fan.present? %>
-        <h4><%= t('.title_fan') %> <%= @fan.nickname %></h4>
+        <h4><%= t('.title_fan') %> "<%= @fan.nickname %>"</h4>
     <% else %>
         <h4><%= t('.title') %></h4>
     <% end %>

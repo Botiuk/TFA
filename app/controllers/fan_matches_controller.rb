@@ -56,7 +56,7 @@ class FanMatchesController < ApplicationController
     def set_fan_match
         @fan_match = FanMatch.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-        redirect_to fan_matches_url
+        redirect_to matches_url
     end
 
     def fan_match_params
@@ -64,7 +64,7 @@ class FanMatchesController < ApplicationController
     end
 
     def my_formhelpers
-        @matches = Match.formhelper
+        @matches = Match.formhelper(["home", "ontour"])
         @fans = Fan.formhelper
     end
 end

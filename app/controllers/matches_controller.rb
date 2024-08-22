@@ -35,9 +35,10 @@ class MatchesController < ApplicationController
     end
 
     def show
-        fans_ids = FanMatch.where(match_id: @match.id).pluck(:fan_id)
         @fan_matches = FanMatch.where(match_id: @match.id)
-        @fans = Fan.where(id: fans_ids).order(:nickname)
+        @fans = Fan.joins(:fan_matches).where(fan_matches: {match_id: @match.id}).order(:nickname)
+        @match_videos = MatchVideo.where(match_id: @match.id)
+        @videos = Video.joins(:match_video).where(match_video: {match_id: @match.id}).order(name: :desc)
     end
 
     def calendar
