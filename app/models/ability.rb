@@ -37,6 +37,7 @@ class Ability
         can [:read, :create, :update, :search], Fan
         can [:read, :create, :update], Match
         can [:create, :destroy], FanMatch
+        can [:create, :destroy], MatchVideo
       end
     end
 

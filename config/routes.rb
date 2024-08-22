@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :fans, except: :destroy
   resources :matches, except: :destroy
   resources :fan_matches, only: [:new, :create, :destroy]
+  resources :match_videos, only: [:new, :create, :destroy]
 
   # Defines the root path route ("/")
   root "main#index"

@@ -11,7 +11,6 @@ uk:
       only_date_long: "%d %B %Yр., %A"
       only_time: "%H:%M"
 
-
   date:
     formats:
       long: "%e %B %Y"
@@ -86,16 +85,16 @@ uk:
           ontour: "виїзний"
           friendly: "дружній"
       fan_match:
-        fan: "Такого фаната до цього матчу"
+        fan: "Фаната до матчу"
       match_video:
-        video: "Таке відео до цього матчу"
+        video: "Відео до матчу"
 
   notice:
     create:
       news_story: "Новину додано"
       atribute: "Атрибутику додано"
       chant: "Заряд додано"
-      match_report: "Відео з матчу додано"
+      match_report: "Відео створено. Якщо потрібно, додайте його до матчу"
       team: "Команду додано"
       stadium: "Стадіон додано"
       season: "Сезон додано"
@@ -103,12 +102,13 @@ uk:
       fan: "Фаната в Лігу-ТОП додано"
       match: "Матч створено"
       fan_match: "Пару фанат-матч створено"
+      match_video: "Відео до матчу додано"
     update:
       news_story: "Новину оновлено"
       user_role: "Роль користувача змінено"
       atribute: "Атрибутику оновлено"
       chant: "Заряд оновлено"
-      match_report: "Відео з матчу оновлено"
+      match_report: "Відео оновлено"
       team: "Команду оновлено"
       stadium: "Стадіон оновлено"
       season: "Сезон оновлено"
@@ -119,9 +119,10 @@ uk:
       news_story: "Новину видалено"
       atribute: "Атрибутику видалено"
       chant: "Заряд видалено"
-      match_report: "Відео з матчу видалено"
+      match_report: "Відео видалено"
       fan_match_from_fan: "Матч з відвіданих фанатом видалено"
       fan_match_from_match: "Фаната з матчу видалено"
+      match_video: "Відео з матчу видалено"
 
   alert:
     access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -156,18 +157,23 @@ uk:
       news_story: "Додати новину"
       atribute: "Додати атрибутику"
       chant: "Додати заряд"
-      match_report: "Додати відео з матчу"
+      match_report: "Додати відео"
       team: "Додати команду"
       stadium: "Додати стадіон"
       season: "Додати сезон"
       tournament: "Додати турнір"
       fan: "Додати фаната"
       match: "Додати матч"
+      ontour: "Додати виїзд"
+      match_video: "Додати відео з матчу"
     edit: "Редагувати"
     show: "Детальніше"
+    show_match: "Матч"
     delete: "Видалити"
+    delete_from_match: "Видалити з матчу"
     delete_confirm: "Точно видалити?"
     submit: "Підтвердити"
+    not_add_to_match: "Не додавати"
     all:
       news_stories: "Всі новини"
       atributes: "Вся атрибутика"
@@ -470,6 +476,8 @@ uk:
       title: "Детальніше про матч"
       fan_matches: "Фанати на матчі"
       fans_empty: "Немає даних про фанатів на матчі"
+      match_videos: "Відео з матчу"
+      videos_empty: "Немає даних про відео з матчу"
     calendar:
       title: "Календар"
       prompt: "-- показати інший сезон --"
@@ -501,3 +509,17 @@ uk:
       number: "№ п/п"
       nickname: "Нік"
       ontour: "Виїзди"
+
+  match_videos:
+    new:
+      title_match: "Нове відео з матчу"
+      title_video: "Додати матч до відео"
+      title: "Нова пара матч-відео"
+    form:
+      videos_empty: "Неможливо створити нову пару матч-відео, немає жодного незайнятого відео з матчу"
+      matches_empty: "Неможливо створити нову пару матч-відео, спочатку потрібно створити хоча б один матч"
+      match: "Матч:"
+      video: "Відео:"
+      prompt:
+       match: "-- виберіть матч --"
+       video: "-- виберіть відео --"      

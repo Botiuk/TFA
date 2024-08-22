@@ -1,0 +1,59 @@
+<% if @videos.present? && @matches.present? %>
+    <%= form_with(model: match_video) do |form| %>
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <div class="row g-3">
+            <% if params[:video_id].present? %>
+                <div class="col-md-12">
+                    <%= form.label :match_id, t('.match'), style: "display: block" %>
+                    <%= select(:match_video, :match_id, options_for_select(@matches, :selected => form.object.match_id), {:prompt => t('.prompt.match')}, {:class => "form-select"}) %>
+                </div>
+
+                <div>
+                    <%= form.hidden_field :video_id %>
+                </div>
+            <% elsif params[:match_id].present? %>
+                <div class="col-md-12">
+                    <%= form.label :video_id, t('.video'), style: "display: block" %>
+                    <%= select(:match_video, :video_id, options_for_select(@videos, :selected => form.object.video_id), {:prompt => t('.prompt.video')}, {:class => "form-select"}) %>
+                </div>
+
+                <div>
+                    <%= form.hidden_field :match_id %>
+                </div>
+            <% else %>
+                <div class="col-md-12">
+                    <%= form.label :match_id, t('.match'), style: "display: block" %>
+                    <%= select(:match_video, :match_id, options_for_select(@matches, :selected => form.object.match_id), {:prompt => t('.prompt.match')}, {:class => "form-select"}) %>
+                </div>
+
+                <div class="col-md-12">
+                    <%= form.label :video_id, t('.video'), style: "display: block" %>
+                    <%= select(:match_video, :video_id, options_for_select(@videos, :selected => form.object.video_id), {:prompt => t('.prompt.video')}, {:class => "form-select"}) %>
+                </div>
+            <% end %>
+
+            <div class="col-6">
+                <%= form.button nil, class: "btn btn-success" do %>
+                    <%= t('button.submit') %>
+                <% end %>
+            </div>
+            <% if params[:video_id].present? %>
+                <div class="col-6 text-end">
+                    <%= link_to t('button.not_add_to_match'), videos_path(video_type: "match_report"), :method => :post, class: "btn btn-secondary" %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+
+<% elsif @videos.empty? %>
+    <div class="container text-center text-danger">
+        <h6><%= t('.videos_empty') %></h6>
+        <%= link_to t('button.add.match_report'), new_video_path(video_type: "match_report"), :method => :post, class: "btn btn-light btn-sm" %>
+    </div>
+<% else %>
+    <div class="container text-center text-danger">
+        <h6><%= t('.matches_empty') %></h6>
+        <%= link_to t('button.add.match'), new_match_path, :method => :post, class: "btn btn-light btn-sm" %>
+    </div>
+<% end %>
