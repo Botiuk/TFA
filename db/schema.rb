@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_22_080143) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_26_085516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -113,6 +113,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_080143) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.date "photo_date"
+    t.string "description"
+    t.bigint "match_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_photos_on_match_id"
+  end
+
   create_table "seasons", force: :cascade do |t|
     t.string "name"
     t.date "start_date"
@@ -181,4 +190,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_080143) do
   add_foreign_key "matches", "teams", column: "home_team_id"
   add_foreign_key "matches", "teams", column: "visitor_team_id"
   add_foreign_key "matches", "tournaments"
+  add_foreign_key "photos", "matches"
 end
