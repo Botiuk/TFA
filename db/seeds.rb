@@ -150,6 +150,15 @@ when "development"
             match_type: Match.match_types.keys.sample
         )
     end
+    match_ids = Match.ids
+    match_ids.each do |match_id|
+        ActiveStorage::Attachment.create!(
+            record_type: 'Match',
+            record_id: match_id,
+            name: 'photos',
+            blob_id: 1
+        )
+    end
 
     fan_ids = Fan.ids
     match_ids = Match.where(match_type: "ontour").ids
@@ -168,25 +177,6 @@ when "development"
             video_id: video_ids.sample
         )
     end
-
-    match_ids = Match.ids
-    20.times do
-        Photo.create(
-            match_id: match_ids.sample,
-            photo_date: Faker::Date.between(from: 2.years.ago, to: Date.today),
-            description: Faker::Book.title
-        )
-    end
-    photo_ids = Photo.ids
-    photo_ids.each do |photo_id|
-        ActiveStorage::Attachment.create!(
-            record_type: 'Photo',
-            record_id: photo_id,
-            name: 'image',
-            blob_id: 1
-        )
-    end
-
 
 when "production"
 

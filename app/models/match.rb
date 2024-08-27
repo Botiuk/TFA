@@ -7,7 +7,8 @@ class Match < ApplicationRecord
 
     has_many :fan_matches
     has_many :match_videos
-    has_many :photos
+
+    has_many_attached :photos
 
     validates :home_goal, :visitor_goal, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
     validates :start_at, :match_type, presence: true
