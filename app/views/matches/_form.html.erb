@@ -55,6 +55,21 @@
             <div class="col-12 my-2" style="text-align: justify;"><%= t('.instruction') %></div>
 
             <div class="col-12">
+                <%= form.label :aphotos, t('.photos'), style: "display: block" %>
+                <% if @match.photos.attached? %>
+                    <% @match.photos.each do |photos| %>
+                        <%= form.hidden_field :photos, multiple: true, value: photos.signed_id %>
+                        <%= cl_image_tag(photos.key, width: 175, crop: :scale) %>
+                    <% end %>
+                <% end %>
+            </div>
+
+            <div class="col-12">
+                
+                <%= form.file_field :photos, direct_upload: true, multiple: true, class: "form-control" %>
+            </div>
+
+            <div class="col-12">
                 <%= form.button nil, class: "btn btn-success" do %>
                     <%= t('button.submit') %>
                 <% end %>

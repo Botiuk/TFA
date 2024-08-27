@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-12">
                     <%= @match.season.name %>
-                </div>                
+                </div>
                 <div class="col-12">
                     <% if @match.tournament.subname.present? || @match.tournament.group.present? || @match.stage.present? %>
                         <%= @match.tournament.name %>.
@@ -93,6 +93,44 @@
         </div>
     </div>
 
+    <% if  @match.photos.attached? %>
+        <hr style="border-top: dotted 1px;">
+
+        <div class="row mb-2">
+            <div class="col"><h5><%= t('.photos') %></h5></div>
+        </div>
+
+        <div class="row px-3">
+            <% @match.photos.each do |photos| %>
+                <div class="col-6 p-0">
+                    <img class="mw-100" src="<%= cloudinary_url(photos.key, height: 200, crop: :scale) %>"  style="width:100%;">
+                </div>
+            <% end %>
+        </div>
+
+    <% end %>
+
+    <hr style="border-top: dotted 1px;">
+
+    <div class="row mb-2">
+        <div class="col"><h5><%= t('.match_videos') %> (<%= @videos.count %>)</h5></div>
+        <% if can? :create, MatchVideo %>
+            <div class="col text-end">
+                <%= link_to t('button.add.match_video'), new_match_video_path(match_id: @match.id), :method => :post, class: "btn btn-light btn-sm" %>
+            </div>
+        <% end %>
+    </div>
+
+    <% if @videos.present? %>
+        <div class="row">
+            <% @videos.each do |video| %>
+                <%= render 'videos/video', video: video %>
+            <% end %>
+        </div>
+    <% else %>
+        <%= t('.videos_empty') %>
+    <% end %>
+
     <% if @match.match_type != "friendly" && (can? :show, Fan) %>
         <hr style="border-top: dotted 1px;">
 
@@ -135,28 +173,6 @@
         <% else %>
             <%= t('.fans_empty') %>
         <% end %>
-    <% end %>
-
-    
-    <hr style="border-top: dotted 1px;">
-
-    <div class="row mb-2">
-        <div class="col"><h5><%= t('.match_videos') %> (<%= @videos.count %>)</h5></div>
-        <% if can? :create, MatchVideo %>
-            <div class="col text-end">
-                <%= link_to t('button.add.match_video'), new_match_video_path(match_id: @match.id), :method => :post, class: "btn btn-light btn-sm" %>
-            </div>
-        <% end %>
-    </div>
-
-    <% if @videos.present? %>
-        <div class="row">
-            <% @videos.each do |video| %>                
-                <%= render 'videos/video', video: video %>
-            <% end %>
-        </div>
-    <% else %>
-        <%= t('.videos_empty') %>
     <% end %>
 
     <% if can? :create, Match %>
