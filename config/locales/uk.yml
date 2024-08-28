@@ -123,6 +123,7 @@ uk:
       fan_match_from_fan: "Матч з відвіданих фанатом видалено"
       fan_match_from_match: "Фаната з матчу видалено"
       match_video: "Відео з матчу видалено"
+      photos: "Фотографію з матчу видалено"
 
   alert:
     access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -172,6 +173,7 @@ uk:
     delete: "Видалити"
     delete_from_match: "Видалити з матчу"
     delete_confirm: "Точно видалити?"
+    delete_photos: "Видалити фото"
     submit: "Підтвердити"
     not_add_to_match: "Не додавати"
     all:
@@ -478,8 +480,9 @@ uk:
       fan_matches: "Фанати на матчі"
       fans_empty: "Немає даних про фанатів на матчі"
       match_videos: "Відео з матчу"
-      videos_empty: "Немає даних про відео з матчу"
+      videos_empty: "Немає відео з матчу"
       photos: "Фотографії з матчу"
+      photos_empty: "Немає фотографій з матчу"
     calendar:
       title: "Календар"
       prompt: "-- показати інший сезон --"
@@ -490,6 +493,9 @@ uk:
       score: "Рахунок"
       seasons_empty: "Поки немає даних про активний чи завершений сезон"
       matches_empty: "Поки немає даних про матчі"
+    attached_photos:
+      title: "Видалення фото з матчу"
+      photos_empty: "Фото відсутні. Додати нові можна через форму редагування матчу"
 
   fan_matches:
     new:

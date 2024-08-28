@@ -92,22 +92,28 @@
             </div>
         </div>
     </div>
-
-    <% if  @match.photos.attached? %>
-        <hr style="border-top: dotted 1px;">
-
-        <div class="row mb-2">
-            <div class="col"><h5><%= t('.photos') %></h5></div>
-        </div>
-
+    
+    <hr style="border-top: dotted 1px;">
+    <div class="row mb-2">
+        <div class="col"><h5><%= t('.photos') %> (<%= @match.photos.count %>)</h5></div>
+        <% if can? :create, Match %>
+            <div class="col text-end">
+                <%= link_to t('button.delete_photos'), matches_attached_photos_path(id: @match.id), :method => :post, class: "btn btn-light btn-sm" %>
+            </div>
+        <% end %>
+    </div>
+    <% if @match.photos.attached? %>
         <div class="row px-3">
             <% @match.photos.each do |photos| %>
-                <div class="col-6 p-0">
-                    <img class="mw-100" src="<%= cloudinary_url(photos.key, height: 200, crop: :scale) %>"  style="width:100%;">
+                <div class="col-6 p-1">
+                    <%= link_to cloudinary_url(photos.key, height: 1000, crop: :scale), target: :_blank, type: "button" do %>
+                        <img class="mw-100" src="<%= cloudinary_url(photos.key, height: 300, crop: :scale) %>"  style="width:100%;">
+                    <% end %>
                 </div>
             <% end %>
         </div>
-
+    <% else %>
+        <%= t('.photos_empty') %>
     <% end %>
 
     <hr style="border-top: dotted 1px;">

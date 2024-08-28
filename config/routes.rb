@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get '/calendar', to: 'matches#calendar'
   get '/liga_top', to: 'fan_matches#liga_top'
   
+  get 'matches/attached_photos', to: 'matches#attached_photos'
+  delete '/deleted_attached_photos', to: 'matches#deleted_attached_photos'
+  
   resources :news_stories
   resources :atributes
   resources :videos, except: :show

@@ -14,6 +14,13 @@ RSpec.describe "Matches", type: :request do
     expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
   end
 
+  it "cannot GET attached_photos and redirects to the sign_in page" do
+    match = create(:match)
+    get matches_attached_photos_path(id: match.id)
+    expect(response).to redirect_to(new_user_session_path)
+    expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
+  end
+
   it "cannot GET new and redirects to the sign_in page" do
     get new_match_path
     expect(response).to redirect_to(new_user_session_path)
@@ -57,6 +64,13 @@ describe "register user (not admin) management" do
     expect(response).to be_successful
   end
 
+  it "cannot GET attached_photos and redirects to the root page" do
+    match = create(:match)
+    get matches_attached_photos_path(id: match.id)
+    expect(response).to redirect_to(root_path)
+    expect(flash[:alert]).to include I18n.t('alert.access_denied')
+  end
+
   it "cannot GET new and redirects to the root page" do
     get new_match_path
     expect(response).to redirect_to(root_path)
@@ -96,6 +110,12 @@ describe "user-admin management" do
   it "can GET show" do
     match = create(:match)
     get match_path(match)
+    expect(response).to be_successful
+  end
+
+  it "can GET attached_photos" do
+    match = create(:match)
+    get matches_attached_photos_path(id: match.id)
     expect(response).to be_successful
   end
 

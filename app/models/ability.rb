@@ -35,7 +35,7 @@ class Ability
         can [:read, :create, :update], Season
         can [:read, :create, :update], Tournament
         can [:read, :create, :update, :search], Fan
-        can [:read, :create, :update], Match
+        can [:read, :create, :update, :attached_photos, :deleted_attached_photos], Match
         can [:create, :destroy], FanMatch
         can [:create, :destroy], MatchVideo
       end

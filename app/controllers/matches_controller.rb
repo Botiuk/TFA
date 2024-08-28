@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
     before_action :authenticate_user!, except: %i[ calendar ]
-    before_action :set_match, only: %i[ edit update show ]
+    before_action :set_match, only: %i[ edit update show attached_photos ]
     before_action :my_formhelpers, only: %i[ new edit create update ]
     authorize_resource
 
@@ -62,6 +62,15 @@ class MatchesController < ApplicationController
         redirect_to calendar_path
     rescue Pagy::OverflowError
         redirect_to calendar_path(page: 1)
+    end
+
+    def attached_photos
+    end
+
+    def deleted_attached_photos
+        @photos = ActiveStorage::Attachment.find(params[:id])
+        @photos.purge
+        redirect_back fallback_location:matches_path, notice: t('notice.destroy.photos')
     end
 
     private
