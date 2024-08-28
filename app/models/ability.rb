@@ -13,7 +13,7 @@ class Ability
       atribute.avaliable == "present"
     end
     can :read, Video
-    can :calendar, Match
+    can [:calendar, :gallery, :gallery_show], Match
     can :liga_top, FanMatch
 
     if user.present?

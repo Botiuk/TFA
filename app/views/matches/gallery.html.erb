@@ -1,0 +1,17 @@
+<div id="content_header">
+    <h4><%= t('.title') %></h4>
+</div>
+<div id="content_body">
+    <% if @seasons.present? %>
+        <% @seasons.each do |season| %>
+            <%= link_to gallery_show_path(season_id: season.id), class: "text-reset" do %>
+                <%= season.name %>
+            <% end %>
+            <br>
+        <% end %>
+
+        <%= render 'shared/pagy' %>
+    <% else %>
+        <h6><%= t('.gallery_empty') %></h6>
+    <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div id="content_header">
+    <h4><%= t('.title') %> "<%= @season.name %>"</h4>
+</div>
+<div id="content_body">
+    <% if @matches.present? %>
+        <div class="row px-3">
+            <% count_photos = 0 %>
+            <% @matches.each do |match| %>
+                <% if match.photos.attached? %>
+                    <% count_photos += match.photos.count %>
+                    <% match.photos.each do |photos| %>
+                        <div class="col-6 p-1">
+                            <%= link_to cloudinary_url(photos.key, height: 1000, crop: :scale), target: :_blank, type: "button" do %>
+                                <div class="container-image-text">
+                                    <img class="mw-100" src="<%= cloudinary_url(photos.key, height: 300, crop: :scale) %>"  style="width:100%;">
+                                    <div class="header-image-text p-1 lh-1 text-center" style="font-size: 11px;">
+                                        <% if match.home_team.team_type.present? %>
+                                            <%= match.home_team.team_type %>
+                                        <% end %>
+                                        "<%= match.home_team.name %>"
+                                        -
+                                        <% if match.visitor_team.team_type.present? %>
+                                            <%= match.visitor_team.team_type %>
+                                        <% end %>
+                                        "<%= match.visitor_team.name %>"
+                                        <br>
+                                        (<%= I18n.l(match.start_at, format: :only_date) %>)
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
+            <% end %>
+            <% if count_photos == 0 %>
+                <%= t('.photos_empty') %>
+            <% end %>
+        </div>
+    <% else %>
+        <%= t('.photos_empty') %>
+    <% end %>
+</div>

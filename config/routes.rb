@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'fans/search', to: 'fans#search'
   get '/calendar', to: 'matches#calendar'
   get '/liga_top', to: 'fan_matches#liga_top'
+  get '/gallery', to: 'matches#gallery'
+  get '/gallery_show', to: 'matches#gallery_show'
   
   get 'matches/attached_photos', to: 'matches#attached_photos'
   delete '/deleted_attached_photos', to: 'matches#deleted_attached_photos'

@@ -145,6 +145,7 @@ uk:
     liga_top: "Ліга-ТОП"
     users: "Користувачі"
     video: "Відео"
+    gallery: "Фото"
     admin: "Адмінка"
     fans: "Фанати"
     teams: "Команди"
@@ -496,6 +497,12 @@ uk:
     attached_photos:
       title: "Видалення фото з матчу"
       photos_empty: "Фото відсутні. Додати нові можна через форму редагування матчу"
+    gallery:
+      title: "Фотоальбоми"
+      gallery_empty: "Немає жодного фотоальбома"
+    gallery_show:
+      title: "Фотоальбом"
+      photos_empty: "У фотоальбомі немає фото"
 
   fan_matches:
     new:

@@ -26,7 +26,7 @@ class Match < ApplicationRecord
         return matches
     end
 
-    def self.calendar(season_id)
+    def self.season_matches(season_id)
         Match.includes(:home_team, :visitor_team).where(season_id: season_id).order(start_at: :asc)
     end
 end

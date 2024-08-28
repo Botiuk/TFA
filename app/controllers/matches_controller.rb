@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-    before_action :authenticate_user!, except: %i[ calendar ]
+    before_action :authenticate_user!, except: %i[ calendar gallery gallery_show ]
     before_action :set_match, only: %i[ edit update show attached_photos ]
     before_action :my_formhelpers, only: %i[ new edit create update ]
     authorize_resource
@@ -46,15 +46,15 @@ class MatchesController < ApplicationController
             @seasons = Season.formhelper
             if params[:season_id].present?
                 @active_season = Season.find(params[:season_id])
-                @pagy, @matches = pagy(Match.calendar(params[:season_id]), limit: 15)
+                @pagy, @matches = pagy(Match.season_matches(params[:season_id]), limit: 15)
             else
                 @active_season = Season.where('end_date > ?', Date.today).or(Season.where(end_date: nil)).order(:end_date).last
                 if @active_season.present?
-                    @pagy, @matches = pagy(Match.calendar(@active_season.id), limit: 15)
+                    @pagy, @matches = pagy(Match.season_matches(@active_season.id), limit: 15)
                 else
                     last_season_end_date = Season.maximum(:end_date)
                     @last_season =  Season.where(end_date: last_season_end_date).last
-                    @pagy, @matches = pagy(Match.calendar(@last_season.id), limit: 15)
+                    @pagy, @matches = pagy(Match.season_matches(@last_season.id), limit: 15)
                 end
             end
         end
@@ -71,6 +71,19 @@ class MatchesController < ApplicationController
         @photos = ActiveStorage::Attachment.find(params[:id])
         @photos.purge
         redirect_back fallback_location:matches_path, notice: t('notice.destroy.photos')
+    end
+
+    def gallery
+        @pagy, @seasons = pagy(Season.order(start_date: :desc, name: :asc), limit: 15)
+    rescue Pagy::OverflowError
+        redirect_to gallery_url(page: 1)
+    end
+
+    def gallery_show
+        @season = Season.find(params[:season_id])
+        @matches = Match.season_matches(params[:season_id]).with_attached_photos
+    rescue ActiveRecord::RecordNotFound
+        redirect_to gallery_url
     end
 
     private
