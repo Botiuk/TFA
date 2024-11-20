@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :stadium do
     country { Faker::Address.country }
@@ -6,6 +8,6 @@ FactoryBot.define do
     loctype {  Stadium.loctypes.keys.sample }
     location_name { Faker::Address.city }
     address { Faker::Address.street_address }
-    stadium_name { Faker::Restaurant.name  }
+    stadium_name { Faker::Restaurant.name }
   end
 end

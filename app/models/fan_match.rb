@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FanMatch < ApplicationRecord
   belongs_to :fan
   belongs_to :match

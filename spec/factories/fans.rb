@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :fan do
     nickname { Faker::Internet.unique.username }

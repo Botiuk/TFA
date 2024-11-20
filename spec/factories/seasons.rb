@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :season do
     random_date = Faker::Date.between(from: 20.years.ago, to: 1.year.ago)

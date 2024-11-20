@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMatchVideos < ActiveRecord::Migration[7.1]
   def change
     create_table :match_videos do |t|
