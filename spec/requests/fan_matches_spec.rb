@@ -35,19 +35,20 @@ RSpec.describe 'FanMatches' do
   end
 
   describe 'user-admin management' do
+    let(:match) { create(:match) }
+    let(:fan) { create(:fan) }
+
     before do
       user = create(:user, role: 'admin')
       login_as(user, scope: :user)
     end
 
     it 'can GET new with params match_id' do
-      match = create(:match)
       get new_fan_match_path(match_id: match.id)
       expect(response).to be_successful
     end
 
     it 'can GET new with params fan_id' do
-      fan = create(:fan)
       get new_fan_match_path(fan_id: fan.id)
       expect(response).to be_successful
     end
@@ -58,8 +59,6 @@ RSpec.describe 'FanMatches' do
     end
 
     it 'can POST create' do
-      match = create(:match)
-      fan = create(:fan)
       post fan_matches_path, params: { fan_match: attributes_for(:fan_match, match_id: match.id, fan_id: fan.id) }
       expect(response).to be_redirect
       follow_redirect!
@@ -72,7 +71,6 @@ RSpec.describe 'FanMatches' do
     end
 
     it 'can DELETE destroy fan_match' do
-      match = create(:match)
       fan_match = create(:fan_match, match_id: match.id)
       delete fan_match_path(fan_match)
       expect(response).to redirect_to(match_path(match))
@@ -80,7 +78,6 @@ RSpec.describe 'FanMatches' do
     end
 
     it 'can DELETE destroy fan_match with params from == fan' do
-      fan = create(:fan)
       fan_match = create(:fan_match, fan_id: fan.id)
       delete fan_match_path(fan_match, from: 'fan')
       expect(response).to redirect_to(fan_path(fan))

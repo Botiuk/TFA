@@ -25,19 +25,20 @@ RSpec.describe 'MatchVideos' do
   end
 
   describe 'user-admin management' do
+    let(:match) { create(:match) }
+    let(:video) { create(:video) }
+
     before do
       user = create(:user, role: 'admin')
       login_as(user, scope: :user)
     end
 
     it 'can GET new with params match_id' do
-      match = create(:match)
       get new_match_video_path(match_id: match.id)
       expect(response).to be_successful
     end
 
     it 'can GET new with params video_id' do
-      video = create(:video)
       get new_match_video_path(video_id: video.id)
       expect(response).to be_successful
     end
@@ -48,8 +49,6 @@ RSpec.describe 'MatchVideos' do
     end
 
     it 'can POST create' do
-      match = create(:match)
-      video = create(:video)
       post match_videos_path,
            params: { match_video: attributes_for(:match_video, match_id: match.id, video_id: video.id) }
       expect(response).to be_redirect
@@ -58,7 +57,6 @@ RSpec.describe 'MatchVideos' do
     end
 
     it 'can DELETE destroy match_video' do
-      match = create(:match)
       match_video = create(:match_video, match_id: match.id)
       delete match_video_path(match_video)
       expect(response).to redirect_to(match_path(match))

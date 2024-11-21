@@ -28,7 +28,5 @@ Metrics/BlockLength:
 
 RSpec/ExampleLength:
   Exclude:
-    - 'spec/requests/fan_matches_spec.rb'
-    - 'spec/requests/match_videos_spec.rb'
     - 'spec/requests/matches_spec.rb'
     - 'spec/requests/seasons_spec.rb'
