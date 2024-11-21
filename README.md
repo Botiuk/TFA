@@ -2,9 +2,11 @@
 
 TFA is the internet home for football fan firm "Terno Field Army". It's an old, now unused site, but rewriting its backend with RoR, and adding new functionality was interesting for me. Many years ago I help wrote frontend and made some design elements for this site.
 
-Built with: Rails 7.1.3, Ruby 3.2.2, postgres, Turbo, Stimulus, Bootstrap, Cloudinary, Trix editor, devise, cancancan.
+Built with: Rails 7.2.1.2, Ruby 3.3.5, postgres, Turbo, Stimulus, Bootstrap, Cloudinary, Trix editor, devise, cancancan.
 
 Test with: RSpec, factory_bot_rails and faker.
+
+Code style checking: RuboCop and his special cops.
 
 Unregistered users can read news, and look at the calendar with matches of the team, fan attributes, videos for learning fan chants and match reports, photo galleries, and the rating of fans for a count of visited "on tour" matches.
 

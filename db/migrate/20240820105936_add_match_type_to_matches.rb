@@ -2,6 +2,9 @@
 
 class AddMatchTypeToMatches < ActiveRecord::Migration[7.1]
   def change
-    add_column :matches, :match_type, :integer
+    change_table :matches do |t|
+      t.integer :match_type
+    end
+    change_column_null :matches, :match_type, false
   end
 end

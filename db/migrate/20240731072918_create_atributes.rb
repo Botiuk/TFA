@@ -3,9 +3,9 @@
 class CreateAtributes < ActiveRecord::Migration[7.1]
   def change
     create_table :atributes do |t|
-      t.string :name
+      t.string :name, null: false
       t.integer :price
-      t.integer :avaliable
+      t.integer :avaliable, null: false
 
       t.timestamps
     end

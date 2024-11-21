@@ -7,6 +7,7 @@ Metrics/MethodLength:
     - 'db/migrate/20240722092641_devise_create_users.rb'
     - 'db/migrate/20240722101446_create_active_storage_tables.active_storage.rb'
     - 'db/migrate/20240813081229_create_matches.rb'
+    - 'db/migrate/20240806070317_create_stadia.rb'
     - 'app/models/ability.rb'
     - 'app/controllers/seasons_controller.rb'
     - 'app/controllers/matches_controller.rb'
@@ -24,15 +25,6 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/development.rb'
     - 'config/routes.rb'
-
-Rails/UniqueValidationWithoutIndex:
-  Exclude:
-    - 'app/models/fan.rb'
-    - 'app/models/fan_match.rb'
-    - 'app/models/match_video.rb'
-    - 'app/models/stadium.rb'
-    - 'app/models/team.rb'
-    - 'app/models/video.rb'
 
 RSpec/ExampleLength:
   Exclude:

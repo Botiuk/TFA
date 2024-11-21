@@ -7,7 +7,7 @@ class CreateMatches < ActiveRecord::Migration[7.1]
       t.references :tournament, null: false, foreign_key: true
       t.string :stage
       t.references :stadium, null: false, foreign_key: true
-      t.datetime :start_at
+      t.datetime :start_at, null: false
       t.references :home_team, null: false
       t.integer :home_goal
       t.references :visitor_team, null: false

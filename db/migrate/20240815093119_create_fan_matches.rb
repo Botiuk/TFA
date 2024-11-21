@@ -8,5 +8,6 @@ class CreateFanMatches < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    add_index :fan_matches, %i[fan_id match_id], unique: true
   end
 end
